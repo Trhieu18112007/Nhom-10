@@ -1,0 +1,327 @@
+/* ==========================================================================
+   1. RESET VÀ THIẾT LẬP CHUNG
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #334155;
+  background-color: #f8fafc;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION
+   ========================================================================== */
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+header h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+/* ==========================================================================
+   3. MAIN & BỐ CỤC KHỐI NỘI DUNG
+   ========================================================================== */
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section,
+aside {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #0f172a;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #2563eb;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   4. SECTION: DỰ ÁN TIÊU BIỂU (#projects)
+   ========================================================================== */
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+#projects > h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0.25rem;
+}
+
+.project-item {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+.project-item h3 {
+  font-size: 1.1rem;
+  color: #1e293b;
+}
+
+.project-item p {
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.project-item strong {
+  color: #334155;
+}
+
+/* Nút "Xem chi tiết dự án" */
+.project-item a {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #2563eb;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease;
+}
+
+.project-item a:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px -2px rgba(37, 99, 235, 0.35);
+}
+
+.project-item a:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px -2px rgba(37, 99, 235, 0.25);
+}
+
+/* ==========================================================================
+   5. HOẠT ĐỘNG 2: VÒNG TRÒN LOADING VÀ ANIMATION XOAY 360 ĐỘ
+   ========================================================================== */
+.spinner-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  gap: 1.25rem;
+  background-color: #f8fafc;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+  margin-top: 1rem;
+}
+
+/* Vòng tròn Loading chính */
+.spinner {
+  width: 50px;
+  height: 50px;
+  /* 1. Viền mờ cho 3 cạnh xung quanh */
+  border: 5px solid #e2e8f0;
+  /* 2. Cạnh trên có màu nổi bật để tạo điểm nhấn xoay */
+  border-top-color: #2563eb;
+  /* 3. Bo tròn 50% tạo hình tròn hoàn hảo */
+  border-radius: 50%;
+  /* 4. Animation xoay 360 độ liên tục vô hạn */
+  animation: spin 1s linear infinite;
+}
+
+/* Định nghĩa chuyển động xoay 360 độ */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Spinner nhỏ ứng dụng thêm trong Aside */
+.aside-spinner-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #bfdbfe;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1e40af;
+}
+
+.spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #bfdbfe;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ==========================================================================
+   6. SECTION: KỸ NĂNG & ASIDE & LIÊN HỆ
+   ========================================================================== */
+#skills ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#skills li {
+  background-color: #f1f5f9;
+  border-left: 3px solid #2563eb;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+aside {
+  background-color: #eff6ff;
+  border-left: 4px solid #2563eb;
+  border-color: #bfdbfe #bfdbfe #bfdbfe #2563eb;
+}
+
+aside h3 {
+  color: #1d4ed8;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+#contact a {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  margin-top: 3rem;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (MOBILE)
+   ========================================================================== */
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  main {
+    margin: 1.25rem auto;
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  section,
+  aside {
+    padding: 1.25rem;
+  }
+}
