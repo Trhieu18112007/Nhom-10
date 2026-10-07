@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tai Tran | Portfolio - Front-end Developer</title>
+    <meta name="description" content="Portfolio cá nhân của Tai Tran - Front-end Developer chuyên CSS Animations, UI/UX Design" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121a2d;
+        --panel: rgba(19, 27, 45, 0.8);
+        --panel-strong: #1a243d;
+        --primary: #6ee7f9;
+        --secondary: #b794ff;
+        --text: #ebf3ff;
+        --muted: #a9b7d2;
+        --line: rgba(255, 255, 255, 0.12);
+        --shadow: rgba(25, 35, 58, 0.45);
+        --success: #67f0b1;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(110, 231, 249, 0.12), transparent 35%),
+          linear-gradient(135deg, #0a0f1d 0%, #111827 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 110px 0;
+      }
+
+      .alt-bg {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(18px);
+        background: rgba(8, 14, 24, 0.52);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 82px;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #08131f;
+        font-weight: 800;
+        transition: transform 0.3s ease;
+      }
+
+      .brand-mark:hover {
+        transform: rotate(360deg) scale(1.1);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+      }
+
+      .nav-links a {
+        position: relative;
+        transition: color 0.25s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -8px;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .nav-button, .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 24px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-weight: 600;
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+      }
+
+      .nav-button, .primary {
+        color: #08131f;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        box-shadow: 0 12px 30px rgba(86, 199, 241, 0.28);
+      }
+
+      .cta-button:hover, .nav-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 35px rgba(110, 231, 249, 0.28);
+      }
+
+      .cta-button:active, .nav-button:active {
+        transform: translateY(1px) scale(0.97);
+      }
+
+      .secondary {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .hero {
+        min-height: 720px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .parallax-section {
+        background-image: linear-gradient(rgba(12, 17, 31, 0.7), rgba(12, 17, 31, 0.8)), url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 52px;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.7rem, 4vw, 5rem);
+        line-height: 1.08;
+        margin-top: 14px;
+        margin-bottom: 18px;
+        max-width: 600px;
+      }
+
+      .typing-text {
+        display: inline-block;
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid var(--primary);
+        color: var(--primary);
+        animation: typing 4s steps(18, end) infinite alternate, blink 0.75s step-end infinite;
+      }
+
+      .lead {
+        max-width: 560px;
+        color: var(--muted);
+        font-size: 1.06rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .stats {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 34px;
+        max-width: 540px;
+      }
+
+      .stats li {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 18px 16px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .stats li:hover {
+        background: rgba(110, 231, 249, 0.1);
+        border-color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .stats strong {
+        display: block;
+        font-size: 1.6rem;
+        margin-bottom: 4px;
+      }
+
+      .stats span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .profile-card {
+        position: relative;
+        z-index: 2;
+        width: min(400px, 100%);
+        background: rgba(14, 23, 38, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 32px;
+        box-shadow: 0 34px 60px rgba(15, 21, 35, 0.5);
+        padding: 28px 24px;
+        backdrop-filter: blur(12px);
+        transition: all 0.3s ease;
+      }
+
+      .profile-card:hover {
+        border-color: rgba(110, 231, 249, 0.3);
+        box-shadow: 0 34px 80px rgba(110, 231, 249, 0.2);
+      }
+
+      .avatar-wrap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 16px 0 24px;
+      }
+
+      .avatar-glow {
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(110, 231, 249, 0.5), transparent 68%);
+        filter: blur(18px);
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      .avatar-image {
+        position: relative;
+        z-index: 1;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #08131f;
+        font-weight: 800;
+        font-size: 3rem;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 30px 50px rgba(110, 231, 249, 0.2);
+        animation: floatUpDown 4s ease-in-out infinite;
+      }
+
+      .profile-info {
+        text-align: center;
+      }
+
+      .card-label {
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .profile-info h3 {
+        margin-top: 6px;
+        margin-bottom: 12px;
+        font-size: 1.8rem;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(103, 240, 177, 0.13);
+        color: var(--success);
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(103, 240, 177, 0.25);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--success);
+        box-shadow: 0 0 12px rgba(103, 240, 177, 0.8);
+        animation: dotPulse 2s ease-in-out infinite;
+      }
+
+      .floating-badge {
+        position: absolute;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(17, 23, 35, 0.8);
+        color: var(--text);
+        font-size: 0.8rem;
+        box-shadow: var(--shadow);
+        animation: floatBadge 4s ease-in-out infinite;
+        backdrop-filter: blur(8px);
+      }
+
+      .badge-one { top: 30px; left: 10px; }
+      .badge-two { bottom: 28px; right: 10px; animation-delay: 0.7s; }
+      .badge-three { top: 118px; right: -18px; animation-delay: 1.2s; }
+
+      .section-heading {
+        margin-bottom: 42px;
+      }
+
+      .section-heading h2 {
+        max-width: 740px;
+        font-size: clamp(2rem, 2vw, 3rem);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .about-card {
+        background: rgba(17, 23, 35, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 38px rgba(7, 10, 18, 0.22);
+        padding: 28px 24px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(110, 231, 249, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .about-card:hover::before {
+        left: 100%;
+      }
+
+      .about-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(110, 231, 249, 0.2);
+        box-shadow: 0 24px 50px rgba(110, 231, 249, 0.15);
+      }
+
+      .about-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-card p {
+        color: var(--muted);
+        position: relative;
+        z-index: 1;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 26px;
+        perspective: 1000px;
+      }
+
+      .project-card {
+        position: relative;
+        width: 100%;
+        height: 550px;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .project-card:hover {
+        transform: rotateY(180deg);
+      }
+
+      .project-card-inner {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        background: rgba(17, 23, 35, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 38px rgba(7, 10, 18, 0.22);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card-back {
+        transform: rotateY(180deg);
+      }
+
+      .project-thumb {
+        height: 240px;
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-thumb::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+        animation: shimmer 3s infinite;
+      }
+
+      .thumb-one {
+        background: linear-gradient(135deg, rgba(6, 10, 18, 0.2), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80") center/cover;
+      }
+
+      .thumb-two {
+        background: linear-gradient(135deg, rgba(6, 10, 18, 0.2), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80") center/cover;
+      }
+
+      .thumb-three {
+        background: linear-gradient(135deg, rgba(6, 10, 18, 0.2), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80") center/cover;
+      }
+
+      .project-body {
+        padding: 22px 20px 24px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+      }
+
+      .project-body h3 {
+        margin-bottom: 10px;
+        font-size: 1.35rem;
+      }
+
+      .project-body p {
+        color: var(--muted);
+        margin-bottom: 16px;
+        flex: 1;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag-list span {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(110, 231, 249, 0.08);
+        color: var(--primary);
+        border: 1px solid rgba(110, 231, 249, 0.15);
+        font-size: 0.72rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .tag-list span:hover {
+        background: rgba(110, 231, 249, 0.2);
+        border-color: var(--primary);
+        transform: scale(1.05);
+      }
+
+      .project-back-content {
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+      }
+
+      .project-back-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        color: var(--primary);
+      }
+
+      .project-back-content p {
+        color: var(--muted);
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+
+      .project-back-link {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #08131f;
+        font-weight: 600;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .project-back-link:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(110, 231, 249, 0.3);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .service-card {
+        background: rgba(17, 23, 35, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 32px 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: translateX(-50%);
+        transition: width 0.5s ease;
+      }
+
+      .service-card:hover::before {
+        width: 80%;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 24px 50px rgba(110, 231, 249, 0.15);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+        animation: iconBounce 2s ease-in-out infinite;
+      }
+
+      .service-card:nth-child(2) .service-icon {
+        animation-delay: 0.2s;
+      }
+
+      .service-card:nth-child(3) .service-icon {
+        animation-delay: 0.4s;
+      }
+
+      .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+
+      .service-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .skills-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .skill-panel {
+        background: rgba(17, 23, 35, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 38px rgba(7, 10, 18, 0.22);
+        padding: 28px;
+      }
+
+      .skill-item + .skill-item {
+        margin-top: 28px;
+      }
+
+      .skill-top {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .skill-bar {
+        position: relative;
+        width: 100%;
+        height: 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+
+      .skill-bar span {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 0;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: inherit;
+        transition: width 2s ease-in-out;
+        box-shadow: 0 0 18px rgba(110, 231, 249, 0.4);
+      }
+
+      .flip-card-wrap {
+        display: grid;
+        place-items: center;
+        min-height: 320px;
+        perspective: 1000px;
+        padding: 20px;
+        background: rgba(17, 23, 35, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 38px rgba(7, 10, 18, 0.22);
+      }
+
+      .flip-card {
+        width: 280px;
+        height: 300px;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 28px;
+        border-radius: 24px;
+        backface-visibility: hidden;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(110, 231, 249, 0.12), rgba(117, 116, 255, 0.12));
+      }
+
+      .flip-card-back {
+        transform: rotateY(180deg);
+        background: linear-gradient(135deg, rgba(123, 92, 255, 0.18), rgba(110, 231, 249, 0.12));
+      }
+
+      .mini-label {
+        color: var(--primary);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        margin-bottom: 14px;
+      }
+
+      .site-footer {
+        padding: 56px 0 90px;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 62px;
+        height: 62px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        box-shadow: 0 16px 30px rgba(183, 148, 255, 0.35);
+        color: #08131f;
+        font-size: 1.5rem;
+        z-index: 50;
+        animation: pulse 2.2s ease-in-out infinite;
+        transition: transform 0.25s ease;
+      }
+
+      .fab:hover {
+        transform: translateY(-4px) scale(1.04);
+      }
+
+      .loading-spinner {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.12);
+        border-top-color: var(--primary);
+        animation: spin 0.9s linear infinite;
+        z-index: 60;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(34px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 rgba(110, 231, 249, 0.25);
+        }
+        50% {
+          transform: scale(1.08);
+          box-shadow: 0 0 24px rgba(110, 231, 249, 0.5);
+        }
+      }
+
+      @keyframes floatUpDown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+      }
+
+      @keyframes floatBadge {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes typing {
+        0% { width: 0; }
+        100% { width: 100%; }
+      }
+
+      @keyframes blink {
+        0%, 100% { border-color: transparent; }
+        50% { border-color: var(--primary); }
+      }
+
+      @keyframes dotPulse {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 12px rgba(103, 240, 177, 0.8);
+        }
+        50% {
+          transform: scale(1.2);
+          box-shadow: 0 0 20px rgba(103, 240, 177, 1);
+        }
+      }
+
+      @keyframes iconBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .about-grid,
+        .projects-grid,
+        .services-grid,
+        .skills-layout,
+        .footer-inner {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links { display: none; }
+        .hero { min-height: auto; padding: 70px 0 40px; }
+        .footer-inner {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .project-card { height: 600px; }
+      }
+
+      @media (max-width: 560px) {
+        .stats { grid-template-columns: 1fr; }
+        .hero-copy h1 { font-size: 2.5rem; }
+        .project-thumb { height: 180px; }
+        .cta-button, .nav-button { width: 100%; }
+        .hero-actions { flex-direction: column; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <div class="brand">
+          <span class="brand-mark">TT</span>
+          <span>Tai Tran</span>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="nav-button" href="#contact">Hire Me</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero parallax-section">
+        <div class="container hero-inner">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Front-end Developer • UI/UX Specialist</p>
+            <h1>Tôi là <span class="typing-text">Web Developer</span></h1>
+            <p class="lead">
+              Tôi là một Front-end Developer chuyên tạo giao diện web hiện đại với các hiệu ứng CSS mượt mà,
+              tối ưu trải nghiệm người dùng và đảm bảo responsive trên mọi thiết bị.
+            </p>
+            <div class="hero-actions">
+              <a class="cta-button primary" href="#projects">Xem dự án</a>
+              <a class="cta-button secondary" href="#contact">Liên hệ</a>
+            </div>
+            <ul class="stats">
+              <li><strong>3+</strong><span>Năm kinh nghiệm</span></li>
+              <li><strong>25+</strong><span>Dự án hoàn thành</span></li>
+              <li><strong>15+</strong><span>Khách hàng hài lòng</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="profile-card">
+              <div class="avatar-wrap">
+                <div class="avatar-glow"></div>
+                <div class="avatar-image"><span>TT</span></div>
+              </div>
+              <div class="profile-info">
+                <p class="card-label">Available for work</p>
+                <h3>Front-end Developer</h3>
+                <div class="status-pill">
+                  <span class="dot"></span>
+                  Online
+                </div>
+              </div>
+            </div>
+            <div class="floating-badge badge-one">Responsive</div>
+            <div class="floating-badge badge-two">CSS Animation</div>
+            <div class="floating-badge badge-three">Fast UI</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Giới thiệu</p>
+            <h2>Thiết kế web mượt mà, hiện đại và thân thiện người dùng</h2>
+          </div>
+          <div class="about-grid">
+            <div class="about-card reveal">
+              <h3>🎨 Design & Code</h3>
+              <p>
+                Tôi kết hợp thiết kế đẹp với code sạch, tạo ra các trang web không chỉ đẹp mắt
+                mà còn hiệu năng cao, dễ bảo trì và mở rộng.
+              </p>
+            </div>
+            <div class="about-card reveal">
+              <h3>⚡ Performance First</h3>
+              <p>
+                Mỗi dự án tôi ưu tiên tốc độ tải, tối ưu hóa hiệu năng và đảm bảo website
+                chạy mượt trên mọi thiết bị từ desktop đến mobile.
+              </p>
+            </div>
+            <div class="about-card reveal">
+              <h3>💡 Innovative Solutions</h3>
+              <p>
+                Tôi luôn tìm tòi các kỹ thuật CSS hiện đại, animations mượt mà và UX pattern
+                tiên tiến để tạo những sản phẩm web nổi bật.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Dịch vụ</p>
+            <h2>Những gì tôi có thể làm cho bạn</h2>
+          </div>
+          <div class="services-grid">
+            <div class="service-card reveal">
+              <div class="service-icon">🎨</div>
+              <h3>UI/UX Design</h3>
+              <p>
+                Thiết kế giao diện người dùng đẹp mắt, trực quan và dễ sử dụng,
+                giúp nâng cao trải nghiệm của khách truy cập.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-icon">✨</div>
+              <h3>CSS Animations</h3>
+              <p>
+                Tạo các hiệu ứng CSS mượt mà, micro-interactions và scroll animations
+                để làm website của bạn sống động hơn.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-icon">📱</div>
+              <h3>Responsive Web</h3>
+              <p>
+                Xây dựng website responsive hoạt động hoàn hảo trên tất cả thiết bị:
+                desktop, tablet, mobile với performance tối ưu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Dự án</p>
+            <h2>Dự án tiêu biểu (Di chuột để lật)</h2>
+          </div>
+          <div class="projects-grid">
+            <div class="project-card reveal">
+              <div class="project-card-inner">
+                <div class="project-thumb thumb-one"></div>
+                <div class="project-body">
+                  <div>
+                    <h3>Brand Landing Page</h3>
+                    <p>Landing page cho thương hiệu thời trang với thiết kế hiện đại,
+                    animations mượt mà và hiệu ứng hover ấn tượng.</p>
+                  </div>
+                  <div class="tag-list">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Animation</span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-card-inner project-card-back">
+                <div class="project-back-content">
+                  <h3>Chi tiết dự án</h3>
+                  <p>Trang đích tối ưu hóa cho mobile, sử dụng keyframes animations,
+                  scroll reveal effects và parallax scrolling hiệu quả.</p>
+                  <a class="project-back-link" href="#">Xem dự án →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card reveal">
+              <div class="project-card-inner">
+                <div class="project-thumb thumb-two"></div>
+                <div class="project-body">
+                  <div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Giao diện dashboard quản lý dữ liệu với biểu đồ tương tác,
+                    layout responsive và các thành phần UI hiệu quả.</p>
+                  </div>
+                  <div class="tag-list">
+                    <span>UI Design</span>
+                    <span>Chart</span>
+                    <span>Responsive</span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-card-inner project-card-back">
+                <div class="project-back-content">
+                  <h3>Chi tiết dự án</h3>
+                  <p>Dashboard với giao diện trực quan, hỗ trợ real-time data display,
+                  animations smooth và UX pattern tiên tiến.</p>
+                  <a class="project-back-link" href="#">Xem dự án →</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card reveal">
+              <div class="project-card-inner">
+                <div class="project-thumb thumb-three"></div>
+                <div class="project-body">
+                  <div>
+                    <h3>E-commerce Storefront</h3>
+                    <p>Thiết kế lại cửa hàng online với UX tối ưu, hiệu ứng hover
+                    ấn tượng và trải nghiệm mua sắm mượt mà.</p>
+                  </div>
+                  <div class="tag-list">
+                    <span>UX/UI</span>
+                    <span>CSS</span>
+                    <span>Animation</span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-card-inner project-card-back">
+                <div class="project-back-content">
+                  <h3>Chi tiết dự án</h3>
+                  <p>E-commerce tối ưu hóa cho conversion rate, với micro-interactions,
+                  scroll animations và loading effects mượt mà.</p>
+                  <a class="project-back-link" href="#">Xem dự án →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Kỹ năng</p>
+            <h2>Các công nghệ và kỹ năng chính</h2>
+          </div>
+          <div class="skills-layout">
+            <div class="skill-panel reveal">
+              <div class="skill-item">
+                <div class="skill-top">
+                  <span>HTML5</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <span data-width="90"></span>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-top">
+                  <span>CSS3 & Animations</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <span data-width="85"></span>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-top">
+                  <span>JavaScript</span>
+                  <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                  <span data-width="80"></span>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-top">
+                  <span>React & Next.js</span>
+                  <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                  <span data-width="75"></span>
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-wrap reveal">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <p class="mini-label">Profile</p>
+                    <h3>Tai Tran</h3>
+                    <p>Front-end Developer</p>
+                  </div>
+                  <div class="flip-card-back">
+                    <p class="mini-label">Get in Touch</p>
+                    <h3>tai@email.com</h3>
+                    <p>+84 987 654 321</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div class="container footer-inner reveal">
+        <div>
+          <p class="eyebrow">Liên hệ</p>
+          <h2>Sẵn sàng bắt đầu dự án tiếp theo?</h2>
+        </div>
+        <a class="cta-button primary" href="mailto:tai@email.com">Gửi email</a>
+      </div>
+    </footer>
+
+    <a class="fab" href="#contact" aria-label="Contact">
+      <span>✦</span>
+    </a>
+    <div class="loading-spinner" aria-label="Loading"></div>
+
+    <script>
+      const revealItems = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.15 });
+
+      revealItems.forEach((item) => revealObserver.observe(item));
+
+      const skillBars = document.querySelectorAll(".skill-bar span");
+      window.addEventListener("load", () => {
+        skillBars.forEach((bar) => {
+          const target = Number(bar.dataset.width || 0);
+          bar.style.width = target + "%";
+        });
+      });
+    </script>
+  </body>
+</html>
