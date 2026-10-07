@@ -1,0 +1,22 @@
+/* Mobile-first: Mặc định là màn hình nhỏ (< 600px) */
+:root {
+  --fs-h1: 1.8rem;
+  --fs-h2: 1.5rem;
+  --fs-h3: 1.25rem;
+  --fs-p: 1rem;
+}
+
+/* Khi màn hình >= 600px thì tăng kích cỡ chữ */
+@media (min-width: 600px) {
+  :root {
+    --fs-h1: 2.5rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.5rem;
+    --fs-p: 1.125rem;
+  }
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+p  { font-size: var(--fs-p); }

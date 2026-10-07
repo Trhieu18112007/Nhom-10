@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Portfolio Cá Nhân</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="layout-container">
+
+    <!-- 1. HEADER (grid-column: 1 / -1) -->
+    <header class="site-header">
+        <h1>Nguyễn Thanh Hiền - Portfolio</h1>
+        <nav aria-label="Điều hướng chính">
+            <ul class="nav-list">
+                <li><a href="#about">Về Tôi</a></li>
+                <li><a href="#projects">Dự Án</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. MAIN CONTENT (Cột chính bên trái) -->
+    <main class="main-content">
+        <!-- Về bản thân -->
+        <section id="about" class="card">
+            <h2>Giới Thiệu Bản Thân</h2>
+            <p>Tôi là sinh viên ngành Công nghệ Thông tin, đam mê xây dựng các giao diện web tối ưu trải nghiệm và hiệu năng.</p>
+        </section>
+
+        <!-- Danh sách dự án -->
+        <section id="projects">
+            <h2>Dự Án Tiêu Biểu</h2>
+            <div class="projects-grid">
+                <article class="card">
+                    <h3>Dự án 1: E-Commerce</h3>
+                    <p>Website mua sắm trực tuyến với tính năng phân loại sản phẩm, giỏ hàng và thanh toán trực tuyến.</p>
+                    <a href="#" class="btn">Xem chi tiết</a>
+                </article>
+
+                <article class="card">
+                    <h3>Dự án 2: Quản Lý Công Việc</h3>
+                    <p>Ứng dụng hỗ trợ theo dõi tiến độ công việc hàng ngày và xuất báo cáo thống kê tiến độ.</p>
+                    <a href="#" class="btn">Xem chi tiết</a>
+                </article>
+
+                <article class="card">
+                    <h3>Dự án 3: Landing Page Sự Kiện</h3>
+                    <p>Trang đích chuẩn Responsive tối ưu cho thiết bị di động, chuẩn SEO Semantic.</p>
+                    <a href="#" class="btn">Xem chi tiết</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Kỹ năng (Flexbox wrap) -->
+        <section id="skills" class="card">
+            <h2>Kỹ Năng Kỹ Thuật</h2>
+            <ul class="skills-tags">
+                <li class="skill-tag">HTML5</li>
+                <li class="skill-tag">CSS3 / Flexbox / Grid</li>
+                <li class="skill-tag">JavaScript ES6+</li>
+                <li class="skill-tag">Python</li>
+                <li class="skill-tag">Git & GitHub</li>
+                <li class="skill-tag">VS Code</li>
+                <li class="skill-tag">Responsive Design</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 3. SIDEBAR (<aside> - Cột phụ bên phải) -->
+    <aside class="site-sidebar">
+        <section class="card card-highlight">
+            <h3>Trạng Thái Hiện Tại</h3>
+            <p>Đang tìm kiếm cơ hội thực tập và tham gia các dự án phát triển phần mềm Front-End/Web.</p>
+        </section>
+
+        <section id="contact" class="card">
+            <h2>Liên Hệ</h2>
+            <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+            <p>GitHub: <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a></p>
+        </section>
+    </aside>
+
+    <!-- 4. FOOTER (grid-column: 1 / -1) -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Nguyễn Thanh Hiền. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+</body>
+</html>

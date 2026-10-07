@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Portfolio Cá Nhân</title>
+</head>
+<body>
+
+    <!-- 
+      ======================================================================
+      1. KHỐI HEADER (<header>)
+      - Vai trò: Đại diện cho phần mở đầu của trang web hoặc một phân đoạn tài liệu.
+      - Thành phần: Chứa logo, tiêu đề chính của trang và các thành phần định hướng tổng quan.
+      - Khác biệt với <div>: Định hình cấu trúc phân cấp tài liệu rõ ràng, giúp công cụ 
+        tìm kiếm (SEO) và trình đọc màn hình nhận biết ngay đây là phần đầu trang.
+      ======================================================================
+    -->
+    <header>
+        <h1>Nguyễn Thanh Hiền - Portfolio</h1>
+
+        <!-- 
+          2. KHỐI NAVIGATION (<nav>)
+          - Vai trò: Chứa tập hợp các liên kết điều hướng chính đến các mục trong website.
+          - Lợi ích: Tối ưu cho khả năng tiếp cận (Accessibility - a11y), trình đọc màn hình 
+            có thể cho phép người khiếm thị bỏ qua hoặc chuyển nhanh qua các mục điều hướng.
+        -->
+        <nav aria-label="Điều hướng chính">
+            <ul>
+                <li><a href="#about">Về Tôi</a></li>
+                <li><a href="#projects">Dự Án</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 
+      ======================================================================
+      3. KHỐI NỘI DUNG CHÍNH (<main>)
+      - Vai trò: Bao bọc nội dung trung tâm, quan trọng và duy nhất của trang web.
+      - Quy tắc: Mỗi tài liệu HTML chỉ có duy nhất 1 thẻ <main> đang hoạt động (không ẩn).
+      - Lợi ích: Báo hiệu cho các bot tìm kiếm (Googlebot) biết đây là nội dung cốt lõi,
+        đồng thời hỗ trợ phím tắt nhảy nhanh đến nội dung chính trên thiết bị trợ năng.
+      ======================================================================
+    -->
+    <main>
+
+        <!-- 
+          4. KHỐI SECTION (<section>) - Phân đoạn 1: Giới thiệu bản thân
+          - Vai trò: Đại diện cho một phần nội dung độc lập theo một chủ đề cụ thể trong trang.
+          - Yêu cầu: Nên luôn có tiêu đề phân cấp (h2 - h6) tương ứng.
+        -->
+        <section id="about">
+            <h2>Giới Thiệu Bản Thân</h2>
+            <p>Tôi là sinh viên ngành Công nghệ Thông tin, đam mê xây dựng các giao diện web tối ưu trải nghiệm và hiệu năng.</p>
+        </section>
+
+        <!-- 
+          KHỐI SECTION (<section>) - Phân đoạn 2: Dự án tiêu biểu
+        -->
+        <section id="projects">
+            <h2>Dự Án Tiêu Biểu</h2>
+
+            <!-- 
+              5. KHỐI ARTICLE (<article>)
+              - Vai trò: Bao bọc một khối nội dung độc lập, hoàn chỉnh và có thể tái sử dụng 
+                hoặc trích xuất đứng riêng rẽ (như một bài viết, một thẻ sản phẩm/dự án).
+              - Khác biệt với <section>: <article> mang tính khép kín và tự trọn vẹn ý nghĩa, 
+                trong khi <section> là phân đoạn theo chủ đề lớn hơn.
+            -->
+            <article class="project-item">
+                <h3>Dự án 1: Website Bán Hàng E-Commerce</h3>
+                <p>Website mua sắm trực tuyến với tính năng phân loại sản phẩm, giỏ hàng và thanh toán ngân hàng.</p>
+                <p><strong>Công nghệ:</strong> HTML5, CSS3, JavaScript</p>
+                <a href="#">Xem chi tiết dự án</a>
+            </article>
+
+            <article class="project-item">
+                <h3>Dự án 2: Ứng Dụng Quản Lý Công Việc</h3>
+                <p>Ứng dụng desktop/web hỗ trợ theo dõi tiến độ công việc hàng ngày và xuất báo cáo thống kê.</p>
+                <p><strong>Công nghệ:</strong> Python, SQLite</p>
+                <a href="#">Xem chi tiết dự án</a>
+            </article>
+
+            <article class="project-item">
+                <h3>Dự án 3: Landing Page Giới Thiệu Sự Kiện</h3>
+                <p>Trang đích chuẩn Responsive tối ưu cho thiết bị di động, tốc độ tải nhanh và chuẩn SEO Semantic.</p>
+                <p><strong>Công nghệ:</strong> Semantic HTML5, Flexbox & CSS Grid</p>
+                <a href="#">Xem chi tiết dự án</a>
+            </article>
+        </section>
+
+        <!-- 
+          KHỐI SECTION (<section>) - Phân đoạn 3: Kỹ năng & Liên hệ
+        -->
+        <section id="skills">
+            <h2>Kỹ Năng Kỹ Thuật</h2>
+            <ul>
+                <li>Ngôn ngữ: HTML5, CSS3, JavaScript, Python</li>
+                <li>Công cụ & Nền tảng: Git, GitHub, VS Code</li>
+            </ul>
+        </section>
+
+        <!-- 
+          6. KHỐI ASIDE (<aside>)
+          - Vai trò: Chứa nội dung phụ trợ hoặc thông tin liên quan gián tiếp đến nội dung chính xung quanh.
+          - Ví dụ: Bảng thông báo bên lề, trích dẫn ngắn, trạng thái làm việc hoặc link mạng xã hội nhanh.
+          - Lợi ích: Tách biệt rành mạch thông tin phụ ra khỏi luồng nội dung cốt lõi của <main>.
+        -->
+        <aside>
+            <h3>Trạng Thái Hiện Tại</h3>
+            <p>Đang tìm kiếm cơ hội thực tập và tham gia các dự án phát triển phần mềm Front-End/Web.</p>
+        </aside>
+
+        <!-- Phân đoạn 4: Liên hệ -->
+        <section id="contact">
+            <h2>Thông Tin Liên Hệ</h2>
+            <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+            <p>GitHub: <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a></p>
+        </section>
+
+    </main>
+
+    <!-- 
+      ======================================================================
+      7. KHỐI FOOTER (<footer>)
+      - Vai trò: Đại diện cho phần chân của tài liệu hoặc của một phân đoạn.
+      - Thành phần: Chứa thông tin bản quyền (copyright), thông tin tác giả, 
+        chính sách dịch vụ hoặc các liên kết phụ trợ.
+      - Lợi ích: Đóng lại khung cấu trúc tài liệu một cách chuẩn mực theo tiêu chuẩn web W3C.
+      ======================================================================
+    -->
+    <footer>
+        <p>&copy; 2026 Nguyễn Thanh Hiền. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+</body>
+</html>
