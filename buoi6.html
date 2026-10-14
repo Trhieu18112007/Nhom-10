@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trần Tấn Tài | Portfolio - Giới Thiệu Bản Thân</title>
+  <meta name="description" content="Trang Portfolio giới thiệu bản thân của Trần Tấn Tài - Front-end Developer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* ==========================================================================
+       1. BASE (Biến CSS Tông Sáng & Xanh Dương, Reset & Định dạng HTML)
+       ========================================================================== */
+    :root {
+      /* Bảng màu Tông Sáng & Xanh Dương */
+      --bg-main: #f8fafc;
+      --bg-alt: #ffffff;
+      --primary: #0284c7;       /* Xanh dương chủ đạo (Sky/Blue 600) */
+      --primary-light: #e0f2fe; /* Xanh dương nhạt cho nền tag/badge */
+      --secondary: #6366f1;     /* Tím Indigo pha trộn */
+      --accent: #0ea5e9;        /* Xanh dương sáng */
+      --success: #10b981;       /* Xanh lá trạng thái */
+      --text-main: #0f172a;     /* Chữ tối chủ đạo (Slate 900) */
+      --text-muted: #64748b;    /* Chữ phụ (Slate 500) */
+      --text-dark: #ffffff;     /* Chữ trên nền màu đậm */
+
+      /* Giá trị RGB để tùy biến độ trong suốt (Alpha) */
+      --primary-rgb: 2, 132, 199;
+      --secondary-rgb: 99, 102, 241;
+      --success-rgb: 16, 185, 129;
+      --glass-rgb: 255, 255, 255;
+
+      /* Viền, Bóng đổ & Bo góc */
+      --border-line: rgba(148, 163, 184, 0.22);
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --shadow-card: 0 20px 40px -15px rgba(2, 132, 199, 0.08);
+      --shadow-glow: 0 10px 25px rgba(2, 132, 199, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Quả cầu ánh sáng nền sáng chuyển động (Ambient Orbs) */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.45;
+      pointer-events: none;
+      animation: ambientFloat 12s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      top: -120px;
+      left: -100px;
+      background: #bae6fd; /* Xanh dương nhạt */
+    }
+
+    body::after {
+      bottom: -120px;
+      right: -100px;
+      background: #c7d2fe; /* Tím xanh nhạt */
+      animation-delay: -6s;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+
+    /* ==========================================================================
+       2. LAYOUT (Khung chứa, Chia cột Grid/Flex & Bố cục vùng)
+       ========================================================================== */
+    .container {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-alt {
+      background: rgba(2, 132, 199, 0.025);
+      border-top: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 250, 252, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .site-footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border-line);
+      background: #f1f5f9;
+    }
+
+    .grid-hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+
+    /* ==========================================================================
+       3. COMPONENTS (Các thành phần giao diện & Hiệu ứng tương tác)
+       ========================================================================== */
+    
+    /* --- Navbar --- */
+    .navbar {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .brand:hover .brand-logo {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-dark);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(2, 132, 199, 0.35);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border-color: var(--border-line);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-4px);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    /* --- Glass Card (Thẻ kính tông sáng có vệt sáng quét qua) --- */
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.08), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.65s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .glass-card:hover::before {
+      left: 120%;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(2, 132, 199, 0.4);
+      box-shadow: 0 25px 45px rgba(2, 132, 199, 0.12);
+    }
+
+    /* --- Profile Card, Avatar & Floating Badges --- */
+    .profile-wrapper {
+      position: relative;
+    }
+
+    .profile-card {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar-box {
+      position: relative;
+      width: 144px;
+      height: 144px;
+      margin: 0 auto 22px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .avatar-glow {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.25), transparent 70%);
+      filter: blur(12px);
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    .avatar-circle {
+      position: relative;
+      z-index: 1;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-dark);
+      font-size: 2.8rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 3px solid #ffffff;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+
+    .avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .avatar-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .avatar-box:hover .avatar-overlay {
+      opacity: 1;
+    }
+
+    .floating-badge {
+      position: absolute;
+      z-index: 3;
+      padding: 8px 14px;
+      border-radius: 99px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #ffffff;
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      color: var(--primary);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(8px);
+      animation: floatBadge 4s ease-in-out infinite;
+    }
+
+    .badge-1 { top: -12px; left: -14px; }
+    .badge-2 { bottom: 24px; right: -16px; animation-delay: 1.5s; }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #047857;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    /* --- Personal Info List --- */
+    .info-list {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-line);
+      text-align: left;
+      display: grid;
+      gap: 12px;
+      font-size: 0.92rem;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+
+    .info-item strong {
+      color: var(--text-main);
+    }
+
+    /* --- Image Gallery Card --- */
+    .gallery-card {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image-slot {
+      position: relative;
+      height: 215px;
+      background: #e2e8f0;
+      border-bottom: 1px solid var(--border-line);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .image-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover .image-slot img {
+      transform: scale(1.06);
+    }
+
+    .upload-badge {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .upload-badge span {
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 0.82rem;
+    }
+
+    .image-slot:hover .upload-badge {
+      opacity: 1;
+    }
+
+    .gallery-body {
+      padding: 24px;
+    }
+
+    /* --- Skill Bars & Tags --- */
+    .skill-item + .skill-item {
+      margin-top: 22px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .skill-track {
+      height: 11px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skill-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .skill-fill::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmerBar 2.2s infinite;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .tag:hover {
+      background: var(--primary);
+      color: #ffffff;
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+    }
+
+
+    /* ==========================================================================
+       4. UTILITIES & ANIMATIONS (Tiện ích, Keyframes & Responsive)
+       ========================================================================== */
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .title-xl {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .title-lg {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .title-md {
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .text-gradient-anim {
+      background: linear-gradient(90deg, #0f172a, var(--primary), var(--secondary), var(--primary), #0f172a);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmer 6s linear infinite;
+    }
+
+    .text-muted { color: var(--text-muted); }
+    .mb-sm { margin-bottom: 12px; }
+    .mb-md { margin-bottom: 24px; }
+    .mb-lg { margin-bottom: 42px; }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.12s; }
+    .delay-2 { transition-delay: 0.24s; }
+
+    /* Tiện ích click sửa chữ trực tiếp */
+    [contenteditable="true"] {
+      outline: none;
+      border-radius: 6px;
+      transition: box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    [contenteditable="true"]:hover {
+      box-shadow: 0 0 0 1px dashed rgba(2, 132, 199, 0.5);
+      cursor: text;
+    }
+
+    [contenteditable="true"]:focus {
+      background: var(--primary-light);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+
+    /* --- Hệ thống @Keyframes --- */
+    @keyframes ambientFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 40px) scale(1.1); }
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.12); opacity: 0.8; }
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 6px rgba(16, 185, 129, 0.6); }
+      50% { transform: scale(1.3); box-shadow: 0 0 14px rgba(16, 185, 129, 0.9); }
+    }
+
+    @keyframes textShimmer {
+      to { background-position: 200% center; }
+    }
+
+    @keyframes shimmerBar {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* --- Responsive Media Queries --- */
+    @media (max-width: 860px) {
+      .grid-hero,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .section {
+        padding: 60px 0;
+      }
+      .badge-1 { left: 8px; }
+      .badge-2 { right: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <nav class="navbar container">
+      <a href="#" class="brand">
+        <span class="brand-logo">TT</span>
+        <span>Trần Tấn Tài</span>
+      </a>
+      <div class="nav-links">
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#gia-tri">Điểm mạnh</a>
+        <a href="#hinh-anh">Hình ảnh</a>
+        <a href="#ky-nang">Kỹ năng</a>
+        <a href="#lien-he">Liên hệ</a>
+      </div>
+      <a href="#lien-he" class="btn btn-primary">Kết nối ngay</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO: GIỚI THIỆU BẢN THÂN ================= -->
+    <section id="gioi-thieu" class="section">
+      <div class="container grid-hero">
+        
+        <!-- Cột trái: Lời giới thiệu -->
+        <div class="reveal">
+          <p class="eyebrow">Xin chào, tôi là</p>
+          <h1 class="title-xl text-gradient-anim" contenteditable="true" spellcheck="false" data-key="hero_name">Trần Tấn Tài</h1>
+          <p class="title-md" style="color: var(--primary);" contenteditable="true" spellcheck="false" data-key="hero_role">
+            Front-end Developer & UI/UX Enthusiast
+          </p>
+          <p class="text-muted mb-md" contenteditable="true" spellcheck="false" data-key="hero_bio">
+            Tôi là một lập trình viên Front-end đam mê việc chuyển hóa các bản thiết kế thành giao diện web sống động, mượt mà và chuẩn xác. Với sự kết hợp giữa tư duy thẩm mỹ và kỹ thuật viết code theo cấu trúc rõ ràng (Clean Architecture), tôi luôn hướng tới việc mang lại trải nghiệm trực quan, tốc độ phản hồi nhanh và tương thích hoàn hảo trên mọi thiết bị.
+          </p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="#hinh-anh" class="btn btn-primary">Xem hình ảnh</a>
+            <a href="#ky-nang" class="btn btn-outline">Xem kỹ năng</a>
+          </div>
+        </div>
+
+        <!-- Cột phải: Thẻ hồ sơ sáng màu -->
+        <div class="profile-wrapper reveal delay-1">
+          <span class="floating-badge badge-1">✨ Clean CSS</span>
+          <span class="floating-badge badge-2">⚡ Fast UI</span>
+          
+          <aside class="glass-card profile-card">
+            <div class="avatar-box" id="avatarUploadTrigger" title="Click để chèn ảnh đại diện từ máy tính">
+              <div class="avatar-glow"></div>
+              <div class="avatar-circle">
+                <span id="avatarText">TT</span>
+                <img id="avatarPreview" alt="Ảnh đại diện Trần Tấn Tài" />
+                <div class="avatar-overlay">
+                  <span>📷 Chèn ảnh</span>
+                </div>
+              </div>
+              <input type="file" id="avatarFileInput" accept="image/*" hidden />
+            </div>
+
+            <div class="status-badge mb-sm">
+              <span class="status-dot"></span>
+              Sẵn sàng nhận dự án
+            </div>
+            <h2 class="title-md" contenteditable="true" spellcheck="false" data-key="card_name">Trần Tấn Tài</h2>
+            <p class="text-muted" style="font-size: 0.9rem;">Click vào vòng tròn trên để đổi ảnh</p>
+
+            <ul class="info-list">
+              <li class="info-item">
+                <span>Chuyên môn:</span>
+                <strong contenteditable="true" spellcheck="false" data-key="info_1">Front-end UI/UX</strong>
+              </li>
+              <li class="info-item">
+                <span>Định hướng:</span>
+                <strong contenteditable="true" spellcheck="false" data-key="info_2">Clean Code & Animation</strong>
+              </li>
+              <li class="info-item">
+                <span>Khu vực:</span>
+                <strong contenteditable="true" spellcheck="false" data-key="info_3">Việt Nam</strong>
+              </li>
+            </ul>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ĐIỂM MẠNH & PHONG CÁCH LÀM VIỆC ================= -->
+    <section id="gia-tri" class="section section-alt">
+      <div class="container">
+        <div class="mb-lg reveal">
+          <p class="eyebrow">Về bản thân tôi</p>
+          <h2 class="title-lg">Mục tiêu & Phong cách làm việc</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="glass-card hover-lift reveal">
+            <h3 class="title-md" contenteditable="true" spellcheck="false" data-key="about_t1">🎯 Mục tiêu nghề nghiệp</h3>
+            <p class="text-muted" contenteditable="true" spellcheck="false" data-key="about_d1">
+              Không ngừng hoàn thiện kỹ năng xây dựng giao diện hiện đại, làm chủ các công nghệ Front-end mới để tạo ra những sản phẩm có tính ứng dụng và trải nghiệm cao.
+            </p>
+          </article>
+
+          <article class="glass-card hover-lift reveal delay-1">
+            <h3 class="title-md" contenteditable="true" spellcheck="false" data-key="about_t2">⚡ Tư duy tổ chức Code</h3>
+            <p class="text-muted" contenteditable="true" spellcheck="false" data-key="about_d2">
+              Ưu tiên viết HTML chuẩn Semantic và tổ chức CSS khoa học theo luồng Base → Layout → Components → Utilities giúp mã nguồn dễ đọc, dễ bảo trì và mở rộng.
+            </p>
+          </article>
+
+          <article class="glass-card hover-lift reveal delay-2">
+            <h3 class="title-md" contenteditable="true" spellcheck="false" data-key="about_t3">🤝 Tinh thần hợp tác</h3>
+            <p class="text-muted" contenteditable="true" spellcheck="false" data-key="about_d3">
+              Chủ động lắng nghe góp ý (Peer Review), tỉ mỉ trong từng chi tiết nhỏ của giao diện (UI Testing) và luôn tôn trọng tiến độ chung của tập thể.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THƯ VIỆN HÌNH ẢNH HOẠT ĐỘNG & DỰ ÁN ================= -->
+    <section id="hinh-anh" class="section">
+      <div class="container">
+        <div class="flex-between mb-lg reveal">
+          <div>
+            <p class="eyebrow">Góc cá nhân & Dự án</p>
+            <h2 class="title-lg" style="margin-bottom: 4px;">Hình ảnh giới thiệu (Click vào ảnh để thay đổi)</h2>
+            <p class="text-muted">Bạn có thể nhấp trực tiếp vào từng khung hình bên dưới để chèn ảnh từ máy tính của mình.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <!-- Khung ảnh 1 -->
+          <article class="glass-card gallery-card hover-lift reveal">
+            <div class="image-slot" data-slot="gallery_1">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Hình ảnh 1" />
+              <div class="upload-badge">
+                <span>📷 Chọn ảnh từ máy tính</span>
+              </div>
+              <input type="file" accept="image/*" hidden />
+            </div>
+            <div class="gallery-body">
+              <h3 class="title-md" contenteditable="true" spellcheck="false" data-key="gal_t1">Không gian làm việc & Coding</h3>
+              <p class="text-muted" contenteditable="true" spellcheck="false" data-key="gal_d1">
+                Tập trung xây dựng giao diện web chuẩn xác, tối ưu từng dòng code HTML/CSS và kiểm thử hiển thị trên nhiều thiết bị.
+              </p>
+            </div>
+          </article>
+
+          <!-- Khung ảnh 2 -->
+          <article class="glass-card gallery-card hover-lift reveal delay-1">
+            <div class="image-slot" data-slot="gallery_2">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Hình ảnh 2" />
+              <div class="upload-badge">
+                <span>📷 Chọn ảnh từ máy tính</span>
+              </div>
+              <input type="file" accept="image/*" hidden />
+            </div>
+            <div class="gallery-body">
+              <h3 class="title-md" contenteditable="true" spellcheck="false" data-key="gal_t2">Thiết kế UI & Hiệu ứng CSS</h3>
+              <p class="text-muted" contenteditable="true" spellcheck="false" data-key="gal_d2">
+                Sáng tạo các chuyển động mượt mà với Keyframes, hiệu ứng kính mờ và hệ thống màu sắc đồng bộ.
+              </p>
+            </div>
+          </article>
+
+          <!-- Khung ảnh 3 -->
+          <article class="glass-card gallery-card hover-lift reveal delay-2">
+            <div class="image-slot" data-slot="gallery_3">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Hình ảnh 3" />
+              <div class="upload-badge">
+                <span>📷 Chọn ảnh từ máy tính</span>
+              </div>
+              <input type="file" accept="image/*" hidden />
+            </div>
+            <div class="gallery-body">
+              <h3 class="title-md" contenteditable="true" spellcheck="false" data-key="gal_t3">Hoạt động nhóm & Workshop</h3>
+              <p class="text-muted" contenteditable="true" spellcheck="false" data-key="gal_d3">
+                Tích cực trao đổi trong các buổi thảo luận chuyên môn, săn lỗi giao diện (Bug Hunter) và thuyết trình sản phẩm.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KỸ NĂNG CHUYÊN MÔN ================= -->
+    <section id="ky-nang" class="section section-alt">
+      <div class="container">
+        <div class="mb-lg reveal">
+          <p class="eyebrow">Năng lực cốt lõi</p>
+          <h2 class="title-lg">Kỹ năng & Công nghệ sử dụng</h2>
+        </div>
+
+        <div class="grid-2">
+          <!-- Cột thanh kỹ năng động -->
+          <div class="glass-card reveal">
+            <div class="skill-item">
+              <div class="skill-header"><span>HTML5 (Chuẩn Semantic)</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>CSS3 (Flexbox, Grid, Animations)</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>JavaScript (ES6+ & DOM)</span><span>80%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>Responsive Web Design</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+          </div>
+
+          <!-- Cột từ khóa công nghệ & thế mạnh -->
+          <div class="glass-card reveal delay-1">
+            <h3 class="title-md">Công cụ & Kỹ thuật thường dùng</h3>
+            <p class="text-muted mb-md">
+              Áp dụng linh hoạt các công cụ hỗ trợ kiểm thử, tối ưu hiệu năng và quản lý mã nguồn trong quá trình phát triển dự án:
+            </p>
+            <div class="tag-group">
+              <span class="tag">CSS Variables (Design System)</span>
+              <span class="tag">Flexbox & CSS Grid</span>
+              <span class="tag">CSS Keyframes Animation</span>
+              <span class="tag">UI Testing (DevTools)</span>
+              <span class="tag">Tối ưu hiệu năng Web</span>
+              <span class="tag">Git & GitHub</span>
+              <span class="tag">Vibe Coding với AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER: LIÊN HỆ ================= -->
+  <footer id="lien-he" class="site-footer">
+    <div class="container flex-between reveal">
+      <div>
+        <p class="eyebrow">Liên hệ hợp tác</p>
+        <h2 class="title-lg" style="margin-bottom: 4px;">Kết nối với Trần Tấn Tài</h2>
+        <p class="text-muted">💡 Mẹo: Mọi hình ảnh và văn bản bạn chỉnh sửa đều được tự động lưu trên trình duyệt.</p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button type="button" id="resetDataBtn" class="btn btn-outline">Khôi phục mặc định</button>
+        <a href="mailto:trantantai@email.com" class="btn btn-primary">Gửi Email Liên Hệ →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPT HIỆU ỨNG & CHỨC NĂNG CHÈN ẢNH ================= -->
+  <script>
+    // 1. Hiệu ứng hiện dần khi cuộn trang (Scroll Reveal)
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    // 2. Hiệu ứng chạy thanh phần trăm kỹ năng khi cuộn tới
+    const skillFills = document.querySelectorAll('.skill-fill');
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          bar.style.width = bar.dataset.width + '%';
+        }
+      });
+    }, { threshold: 0.3 });
+    skillFills.forEach((bar) => skillObserver.observe(bar));
+
+    // 3. Chức năng chèn Ảnh Đại Diện (Avatar)
+    const avatarTrigger = document.getElementById('avatarUploadTrigger');
+    const avatarInput = document.getElementById('avatarFileInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+    const avatarText = document.getElementById('avatarText');
+
+    function displayAvatar(dataUrl) {
+      avatarPreview.src = dataUrl;
+      avatarPreview.style.display = 'block';
+      avatarText.style.display = 'none';
+    }
+
+    const savedAvatar = localStorage.getItem('ttt_light_avatar_img');
+    if (savedAvatar) {
+      displayAvatar(savedAvatar);
+    }
+
+    avatarTrigger.addEventListener('click', () => avatarInput.click());
+
+    avatarInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        displayAvatar(event.target.result);
+        try {
+          localStorage.setItem('ttt_light_avatar_img', event.target.result);
+        } catch (err) {
+          console.warn('Dung lượng ảnh lớn hơn giới hạn bộ nhớ trình duyệt.');
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // 4. Chức năng chèn ảnh cho 3 khung Thư viện hình ảnh (Gallery)
+    const imageSlots = document.querySelectorAll('.image-slot');
+    imageSlots.forEach((slot) => {
+      const slotKey = 'ttt_light_img_' + slot.dataset.slot;
+      const imgEl = slot.querySelector('img');
+      const fileInput = slot.querySelector('input[type="file"]');
+
+      const savedImg = localStorage.getItem(slotKey);
+      if (savedImg) {
+        imgEl.src = savedImg;
+      }
+
+      slot.addEventListener('click', () => fileInput.click());
+
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          imgEl.src = event.target.result;
+          try {
+            localStorage.setItem(slotKey, event.target.result);
+          } catch (err) {
+            console.warn('Dung lượng ảnh lớn hơn giới hạn lưu trữ trình duyệt.');
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // 5. Tự động lưu nội dung văn bản chỉnh sửa (Contenteditable)
+    const editableElements = document.querySelectorAll('[contenteditable="true"][data-key]');
+    editableElements.forEach((el) => {
+      const storageKey = 'ttt_light_text_' + el.dataset.key;
+      const savedText = localStorage.getItem(storageKey);
+      if (savedText !== null) {
+        el.innerText = savedText;
+      }
+
+      el.addEventListener('input', () => {
+        localStorage.setItem(storageKey, el.innerText);
+      });
+    });
+
+    // 6. Nút khôi phục mặc định
+    document.getElementById('resetDataBtn').addEventListener('click', () => {
+      if (confirm('Bạn có muốn khôi phục toàn bộ hình ảnh và văn bản về trạng thái mặc định ban đầu không?')) {
+        Object.keys(localStorage).forEach((key) => {
+          if (key.startsWith('ttt_light_')) {
+            localStorage.removeItem(key);
+          }
+        });
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>
