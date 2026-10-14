@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4: Thanh điều hướng phức hợp (Complex Nav)</title>
+    <style>
+        /* Reset cơ bản */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; }
+
+        /* YÊU CẦU 1 & 2: Vùng Nav chứa 3 phần tử, phân bổ bằng space-between */
+        .complex-nav {
+            display: flex;
+            justify-content: space-between; /* Phân bổ Đều 3 khối: Left - Center - Right */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            background-color: #ffffff;
+            padding: 15px 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky; /* Giữ menu luôn nổi trên cùng khi cuộn (tùy chọn thêm) */
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Nhóm 1: LOGO (Bên trái) */
+        .nav-logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1e3c72;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-logo span { color: #e74c3c; }
+
+        /* Nhóm 2: MENU CHÍNH (Chính giữa) */
+        .nav-menu {
+            display: flex; /* Dàn ngang các mục menu */
+            list-style: none;
+            gap: 35px; /* Khoảng cách giữa các mục */
+        }
+        .nav-menu > li > a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+        .nav-menu > li > a:hover { color: #3498db; }
+
+        /* YÊU CẦU 3: Menu Dropdown thả xuống & dàn trang bằng Flexbox */
+        .dropdown {
+            position: relative; /* Làm gốc tọa độ cho menu con thả xuống */
+        }
+        .dropdown-menu {
+            display: none; /* Mặc định ẩn đi */
+            flex-direction: column; /* YÊU CẦU: Dàn trang Dropdown bằng Flexbox dọc */
+            position: absolute;
+            top: 100%; /* Đẩy xuống sát mép dưới của chữ */
+            left: -20px;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            margin-top: 15px; /* Tạo khoảng cách với thanh nav */
+        }
+        
+        /* Hiển thị Dropdown khi hover */
+        .dropdown:hover .dropdown-menu {
+            display: flex; 
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* Cầu nối trong suốt để chuột không bị trượt khi di chuyển từ Nav xuống Dropdown */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%; left: 0;
+            width: 100%; height: 15px;
+        }
+
+        .dropdown-menu li { list-style: none; }
+        .dropdown-menu a {
+            display: block; /* Chiếm toàn bộ chiều ngang của menu con */
+            padding: 12px 25px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f0f4f8;
+            color: #3498db;
+            padding-left: 30px; /* Hiệu ứng thò thụt nhẹ khi hover */
+        }
+
+        /* Nhóm 3: NÚT ACTION (Bên phải) */
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline { background: transparent; border: 2px solid #1e3c72; color: #1e3c72; }
+        .btn-outline:hover { background: #f0f4f8; }
+        .btn-primary { background: #1e3c72; border: 2px solid #1e3c72; color: #ffffff; }
+        .btn-primary:hover { background: #2a5298; border-color: #2a5298; }
+
+        /* Animation mượt mà cho Dropdown */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Banner phụ bên dưới để test giao diện */
+        .hero-section {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: calc(100vh - 74px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero-section h1 { font-size: 42px; margin-bottom: 15px; }
+        .hero-section p { font-size: 18px; max-width: 600px; opacity: 0.9; line-height: 1.6; margin-bottom: 30px;}
+        .back-btn { padding: 12px 25px; background: #e74c3c; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .back-btn:hover { background: #c0392b; }
+    </style>
+</head>
+<body>
+
+    <!-- YÊU CẦU 1: Thanh điều hướng gồm 3 nhóm -->
+    <nav class="complex-nav">
+        
+        <!-- Nhóm 1: Logo -->
+        <a href="#" class="nav-logo">LHU<span>.edu</span></a>
+        
+        <!-- Nhóm 2: Menu chính -->
+        <ul class="nav-menu">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Giới thiệu</a></li>
+            
+            <!-- Cấu trúc Dropdown -->
+            <li class="dropdown">
+                <a href="#">Đào tạo ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Khoa Công nghệ thông tin</a></li>
+                    <li><a href="#">Khoa Cơ điện - Điện tử</a></li>
+                    <li><a href="#">Khoa Dược</a></li>
+                    <li><a href="#">Khoa Quản trị kinh doanh</a></li>
+                </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#">Sinh viên ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Lịch học - Lịch thi</a></li>
+                    <li><a href="#">Điểm rèn luyện</a></li>
+                    <li><a href="#">Hỗ trợ IT</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+        
+        <!-- Nhóm 3: Action Buttons -->
+        <div class="nav-actions">
+            <button class="btn btn-outline">Đăng nhập</button>
+            <button class="btn btn-primary">Đăng ký</button>
+        </div>
+
+    </nav>
+
+    <!-- Khu vực hiển thị bên dưới (Demo để thấy Dropdown hoạt động) -->
+    <div class="hero-section">
+        <h1>Thanh Điều Hướng Phức Hợp</h1>
+        <p>Thử rê chuột vào mục <strong>Đào tạo</strong> hoặc <strong>Sinh viên</strong> trên thanh Menu để trải nghiệm hiệu ứng Dropdown thả xuống. Menu con được dàn trang hoàn toàn bằng kỹ thuật Flexbox cột dọc.</p>
+        <a href="index.html" class="back-btn">⬅ Quay lại Menu Bài Tập</a>
+    </div>
+
+</body>
+</html>
