@@ -1,0 +1,33 @@
+/* Trạng thái mặc định của nút */
+.btn-send-message {
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #4F46E5; /* Màu xanh indigo hiện đại */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  /* Bóng đổ mặc định nhẹ nhàng */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Áp dụng transition cho tất cả các thay đổi với hàm cubic-bezier */
+  /* all: bao gồm cả background-color, transform, và box-shadow */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Trạng thái khi di chuột vào (Hover) */
+.btn-send-message:hover {
+  background-color: #3730A3; /* Đổi màu nền tối hơn một chút */
+  transform: translateY(-3px); /* Nhích lên trên 3px */
+  box-shadow: 0 10px 15px rgba(79, 70, 229, 0.3); /* Bóng đổ đậm hơn và có màu đồng điệu với nút */
+}
+
+/* Trạng thái khi click (Active) */
+.btn-send-message:active {
+  /* Thu nhỏ nút lại 5% để tạo cảm giác lực nhấn vật lý */
+  transform: scale(0.95); 
+  /* Giảm bóng đổ sát lại để giống như nút đang bị ấn lún xuống mặt phẳng */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); 
+}

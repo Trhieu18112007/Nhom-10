@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Giới thiệu bản thân</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ====== HAMBURGER MENU (Bài 5) ====== -->
+    <header class="header">
+        <div class="logo">My Portfolio</div>
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+        <!-- Nút Hamburger 3 gạch (Bài 5) -->
+        <div class="hamburger" id="hamburger" onclick="this.classList.toggle('open'); document.getElementById('navMenu').classList.toggle('active');">
+            <span class="bar bar-top"></span>
+            <span class="bar bar-mid"></span>
+            <span class="bar bar-bot"></span>
+        </div>
+    </header>
+
+
+    <!-- ====== HERO SECTION - TYPING EFFECT (Bài 3) + PARALLAX (Bài 4) ====== -->
+    <section class="hero parallax" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-greeting">Xin chào, tôi là</p>
+            <h1 class="hero-name">Nguyễn Viết Trung Hiếu</h1>
+            <!-- Hiệu ứng máy đánh chữ (Bài 3) -->
+            <div class="typing-wrapper">
+                <span class="typing-hidden">Tôi là kỹ sư phần mềm.</span>
+                <span class="typing-text">Tôi là kỹ sư phần mềm.</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====== ABOUT SECTION - CARD FLIP (Bài 2) ====== -->
+    <section class="section about-section" id="about">
+        <h2 class="section-title">Giới thiệu bản thân</h2>
+        <div class="about-container">
+
+            <!-- Thẻ nhân sự lật mặt (Bài 2) -->
+            <div class="card-container">
+                <div class="card-inner">
+                    <!-- Mặt trước -->
+                    <div class="card-front">
+                        <img src="https://ui-avatars.com/api/?name=Nguyen+Viet+Trung+Hieu&background=4318FF&color=fff&size=120&rounded=true" alt="Avatar" class="avatar">
+                        <h3>Nguyễn Viết Trung Hiếu</h3>
+                        <p class="card-role">Front-end Developer</p>
+                    </div>
+                    <!-- Mặt sau -->
+                    <div class="card-back">
+                        <h3>Kết nối với tôi</h3>
+                        <p>Theo dõi tôi trên mạng xã hội nhé!</p>
+                        <div class="social-links">
+                            <a href="#" class="btn-social">Facebook</a>
+                            <a href="#" class="btn-social">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mô tả bản thân -->
+            <div class="about-text">
+                <h3>Về tôi</h3>
+                <p>
+                    Tôi là sinh viên ngành Công nghệ thông tin, đam mê lập trình web 
+                    và thiết kế giao diện người dùng. Tôi luôn tìm kiếm cơ hội học hỏi 
+                    và phát triển bản thân trong lĩnh vực công nghệ.
+                </p>
+                <p>
+                    Hiện tại tôi đang tập trung vào HTML, CSS, JavaScript và các framework 
+                    hiện đại để xây dựng các ứng dụng web đẹp mắt và thân thiện với người dùng.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====== SKILLS SECTION - SKILL BAR ANIMATION (Bài 6) ====== -->
+    <section class="section skills-section" id="skills">
+        <h2 class="section-title">Kỹ năng của tôi</h2>
+        <div class="skills-container">
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>HTML</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--target-width: 90%;"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>CSS</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--target-width: 85%;"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>JavaScript</span>
+                    <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--target-width: 70%;"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>React</span>
+                    <span>60%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--target-width: 60%;"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>SQL / Database</span>
+                    <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--target-width: 75%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====== CONTACT / FOOTER ====== -->
+    <footer class="footer" id="contact">
+        <h2>Liên hệ</h2>
+        <p>Email: trunghieu18112007@email.com</p>
+        <p>&copy; 2026 Nguyễn Viết Trung Hiếu - Portfolio</p>
+    </footer>
+
+
+    <!-- ====== FLOATING ACTION BUTTON - FAB (Bài 1) ====== -->
+    <a href="https://zalo.me" target="_blank" class="fab-button" aria-label="Nhắn tin qua Zalo">
+        <!-- Biểu tượng chat SVG -->
+        <svg fill="#ffffff" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12,2C6.477,2,2,6.029,2,11c0,2.686,1.293,5.132,3.344,6.793c-0.245,1.758-1.229,3.226-1.309,3.344
+            c-0.125,0.186-0.142,0.426-0.043,0.627C4.091,21.966,4.288,22,4.5,22c2.19,0,3.905-0.906,4.908-1.636
+            C10.252,20.78,11.11,21,12,21c5.523,0,10-4.029,10-9S17.523,2,12,2z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
+

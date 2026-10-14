@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3: Lưới ảnh tự do (CSS Grid Masonry)</title>
+    <style>
+        /* Thiết lập cơ bản với nền tối để làm nổi bật ảnh */
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #121212; 
+            color: white; 
+        }
+        
+        .header-title { 
+            text-align: center; 
+            margin: 30px 0 5px; 
+            font-size: 32px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+        .header-desc { 
+            text-align: center; 
+            color: #a0a0a0; 
+            margin-bottom: 40px; 
+            font-size: 15px; 
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            margin: 20px; 
+            padding: 10px 20px; 
+            background: #e74c3c; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: bold; 
+        }
+        .back-btn:hover { background: #c0392b; }
+
+        /* YÊU CẦU ĐỀ BÀI: CẤU TRÚC GRID CHÍNH */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Chia đều 4 cột */
+            grid-auto-rows: 220px; /* Chiều cao tiêu chuẩn của 1 ô */
+            gap: 15px; /* YÊU CẦU: Khoảng cách giữa các ảnh luôn là 15px */
+            padding: 0 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Định dạng chung cho từng khung ảnh */
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden; /* Cắt phần ảnh bị lồi ra khi zoom */
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Thẻ img lấp đầy khung */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Giữ tỉ lệ ảnh không bị méo */
+            transition: transform 0.5s ease; /* Hiệu ứng mượt */
+        }
+
+        /* Hiệu ứng phóng to ảnh khi hover */
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Lớp phủ đen gradient và text hiện lên khi hover */
+        .overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            height: 50%;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        .overlay span {
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        /* YÊU CẦU ĐỀ BÀI: SỬ DỤNG GRID-COLUMN: SPAN & GRID-ROW: SPAN */
+        .span-large { 
+            grid-column: span 2; 
+            grid-row: span 2; 
+        } /* Chiếm 2 cột, 2 dòng (Ảnh to nhất) */
+        
+        .span-tall { 
+            grid-row: span 2; 
+        } /* Chiếm 2 dòng (Ảnh cao) */
+        
+        .span-wide { 
+            grid-column: span 2; 
+        } /* Chiếm 2 cột (Ảnh dài ngang) */
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">⬅ Quay lại Menu</a>
+
+    <h2 class="header-title">Thư viện Ảnh LHU</h2>
+    <p class="header-desc">Khám phá góc nhìn nghệ thuật qua lăng kính sinh viên (Pinterest Style)</p>
+
+    <!-- Bắt đầu Lưới ảnh -->
+    <div class="gallery-container">
+        
+        <!-- Ảnh 1: Ảnh To (Large) -->
+        <div class="gallery-item span-large">
+            <img src="https://picsum.photos/800/800?random=1" alt="Sự kiện trường">
+            <div class="overlay"><span>🎉 Lễ tốt nghiệp hoành tráng</span></div>
+        </div>
+        
+        <!-- Ảnh 2: Ảnh Thường -->
+        <div class="gallery-item">
+            <img src="https://picsum.photos/400/400?random=2" alt="Thư viện">
+            <div class="overlay"><span>📚 Góc học tập yên tĩnh</span></div>
+        </div>
+
+        <!-- Ảnh 3: Ảnh Cao (Tall) -->
+        <div class="gallery-item span-tall">
+            <img src="https://picsum.photos/400/800?random=3" alt="Thể thao">
+            <div class="overlay"><span>🏃 Hội thao sinh viên LHU</span></div>
+        </div>
+
+        <!-- Ảnh 4: Ảnh Thường -->
+        <div class="gallery-item">
+            <img src="https://picsum.photos/400/400?random=4" alt="Coffee">
+            <div class="overlay"><span>☕ Cà phê sinh viên</span></div>
+        </div>
+
+        <!-- Ảnh 5: Ảnh Dài Ngang (Wide) -->
+        <div class="gallery-item span-wide">
+            <img src="https://picsum.photos/800/400?random=6" alt="Robocon">
+            <div class="overlay"><span>🏆 Chế tạo Robot (Robocon)</span></div>
+        </div>
+
+        <!-- Ảnh 6: Ảnh Thường -->
+        <div class="gallery-item">
+            <img src="https://picsum.photos/400/400?random=5" alt="Âm nhạc">
+            <div class="overlay"><span>🎸 CLB Âm nhạc Acoustic</span></div>
+        </div>
+
+        <!-- Ảnh 7: Ảnh Thường -->
+        <div class="gallery
