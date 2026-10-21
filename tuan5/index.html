@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Portfolio Cá Nhân - Bài Tập CSS Tuần 5</title>
+    <!-- Liên kết file CSS độc lập style.css được lưu trong thư mục tuan5 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. HEADER (Bao gồm Yêu cầu 5: Nút Hamburger chuyển thành dấu X) -->
+    <header class="site-header">
+        <h1>Nguyễn Thanh Hiền - Portfolio</h1>
+        
+        <nav aria-label="Điều hướng chính">
+            <ul class="nav-list">
+                <li><a href="#about">Về Tôi</a></li>
+                <li><a href="#parallax">Động Lực</a></li>
+                <li><a href="#projects">Dự Án</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+
+        <!-- Yêu cầu 5: Hamburger Menu Icon chuyển thành dấu X khi thêm class 'open' vào container -->
+        <div class="hamburger-container" id="hamburger-container" title="Bấm để chuyển đổi Hamburger / Dấu X" onclick="this.classList.toggle('open')">
+            <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
+                <span class="bar bar-top"></span>
+                <span class="bar bar-middle"></span>
+                <span class="bar bar-bottom"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="layout-container">
+
+        <!-- Yêu cầu 4: SECTION HIỆU ỨNG PARALLAX (Desktop & Mobile) -->
+        <section id="parallax" class="parallax-section">
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <h2>Không Ngừng Sáng Tạo & Đổi Mới</h2>
+                <p>Khám phá thế giới công nghệ Front-End thông qua các hiệu ứng tương tác 3D và CSS mượt mà.</p>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- CỘT CHÍNH -->
+            <main class="main-content">
+                
+                <!-- Về bản thân (Tích hợp Yêu cầu 3: Typing Effect) -->
+                <section id="about" class="card">
+                    <h2>Giới Thiệu Bản Thân</h2>
+                    
+                    <!-- Yêu cầu 3: Thẻ hiệu ứng máy đánh chữ (Typing Effect thuần CSS) -->
+                    <div class="typing-wrapper">
+                        <p class="typing-text">Xin chào! Tôi là Nguyễn Thanh Hiền.</p>
+                    </div>
+
+                    <p style="margin-top: 1rem;">
+                        Tôi là sinh viên ngành Công nghệ Thông tin, đam mê thiết kế giao diện web tối ưu trải nghiệm người dùng, chuẩn Responsive và hiệu năng cao.
+                    </p>
+                </section>
+
+                <!-- Danh sách dự án (Tích hợp Yêu cầu 2: Lật thẻ Card Flip 3D) -->
+                <section id="projects" class="card">
+                    <h2>Dự Án Tiêu Biểu (Rê chuột để lật thẻ 3D)</h2>
+                    <div class="projects-grid">
+                        
+                        <!-- Thẻ 1 -->
+                        <div class="card-flip">
+                            <div class="card-flip-inner">
+                                <div class="card-front">
+                                    <div class="icon">🛒</div>
+                                    <h3>E-Commerce Web</h3>
+                                    <p>Website mua sắm trực tuyến</p>
+                                    <span class="hint">Hover để xem mặt sau ↻</span>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Chi Tiết Dự Án</h3>
+                                    <p>Giỏ hàng, thanh toán qua cổng điện tử, quản trị sản phẩm với React & CSS Grid.</p>
+                                    <a href="#" class="btn-detail">Xem Chi Tiết</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thẻ 2 -->
+                        <div class="card-flip">
+                            <div class="card-flip-inner">
+                                <div class="card-front">
+                                    <div class="icon">📋</div>
+                                    <h3>Task Management</h3>
+                                    <p>Ứng dụng quản lý công việc</p>
+                                    <span class="hint">Hover để xem mặt sau ↻</span>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Chi Tiết Dự Án</h3>
+                                    <p>Theo dõi tiến độ Kanban board, thống kê năng suất, kéo thả tương tác mượt mà.</p>
+                                    <a href="#" class="btn-detail">Xem Chi Tiết</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thẻ 3 -->
+                        <div class="card-flip">
+                            <div class="card-flip-inner">
+                                <div class="card-front">
+                                    <div class="icon">🚀</div>
+                                    <h3>Landing Page</h3>
+                                    <p>Trang đích sự kiện âm nhạc</p>
+                                    <span class="hint">Hover để xem mặt sau ↻</span>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Chi Tiết Dự Án</h3>
+                                    <p>Tối ưu SEO Semantic, hiệu ứng Animation Parallax và đạt chuẩn 100 điểm Lighthouse.</p>
+                                    <a href="#" class="btn-detail">Xem Chi Tiết</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Yêu cầu 6: Các thanh tiến trình kỹ năng (Progress Bars) chạy từ 0% trong 2s -->
+                <section id="skills" class="card">
+                    <h2>Kỹ Năng Chuyên Môn</h2>
+                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">
+                        Các thanh tiến trình tự động tải từ 0% đến chỉ số cụ thể trong vòng 2 giây:
+                    </p>
+
+                    <div class="skills-progress-list">
+                        <!-- HTML5 & CSS3: 90% -->
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML5 & CSS3 / Flexbox / Grid</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar progress-bar-90"></div>
+                            </div>
+                        </div>
+
+                        <!-- JavaScript: 80% (Theo đề bài ví dụ 80%) -->
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript (ES6+)</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar progress-bar-80"></div>
+                            </div>
+                        </div>
+
+                        <!-- Responsive & UI Design: 85% -->
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Responsive Web Design</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar progress-bar-85"></div>
+                            </div>
+                        </div>
+
+                        <!-- Python: 75% -->
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python & SQLite</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar progress-bar-75"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tags bổ sung -->
+                    <ul class="skills-tags">
+                        <li class="skill-tag">Git / GitHub</li>
+                        <li class="skill-tag">VS Code</li>
+                        <li class="skill-tag">CSS Animation</li>
+                        <li class="skill-tag">UI/UX Principles</li>
+                    </ul>
+                </section>
+            </main>
+
+            <!-- CỘT PHỤ (SIDEBAR) -->
+            <aside class="site-sidebar">
+                <section class="card">
+                    <h2>Mục Tiêu</h2>
+                    <p>Đang tìm kiếm cơ hội thực tập vị trí Front-End Web Developer, tham gia phát triển dự án thực tế.</p>
+                </section>
+
+                <section id="contact" class="card">
+                    <h2>Liên Hệ</h2>
+                    <p><strong>Email:</strong> 125001255@lachong.edu.vn</p>
+                    <p><strong>GitHub:</strong> github.com/NGUYENTHANHHIEN26</p>
+                    <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</p>
+                </section>
+            </aside>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <p>&copy; 2026 Nguyễn Thanh Hiền - Portfolio Bài Tập CSS Tuần 5.</p>
+        </footer>
+
+    </div>
+
+    <!-- ==========================================================
+       YÊU CẦU 1: NÚT TRÒN CỐ ĐỊNH GÓC DƯỚI BÊN PHẢI (PULSE BUTTON)
+       ========================================================== -->
+    <button type="button" class="pulse-btn" aria-label="Liên hệ hỗ trợ" title="Liên hệ ngay">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.5 5.43 3.82 7.04-.15.9-.62 2.37-1.4 3.4-.16.21-.05.51.21.56.5.1 1.7.2 3.09-.49 1.25-.63 2.18-1.33 2.64-1.71.53.13 1.08.2 1.64.2 5.52 0 10-4.03 10-9s-4.48-9-10-9zm-4 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+        </svg>
+    </button>
+
+</body>
+</html>

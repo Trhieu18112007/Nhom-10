@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Portfolio Cá Nhân - Tích hợp AOS</title>
+
+    <!-- ======================================================================
+         1. TÍCH HỢP CSS CỦA THƯ VIỆN AOS QUA CDN
+         ====================================================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Liên kết file CSS chính của trang -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 
+      ======================================================================
+      1. KHỐI HEADER (<header>)
+      - Thêm data-aos="fade-down": Tiêu đề và thanh menu trượt nhẹ từ trên xuống
+      ======================================================================
+    -->
+    <header data-aos="fade-down" data-aos-duration="800">
+        <h1>Nguyễn Thanh Hiền - Portfolio</h1>
+
+        <!-- KHỐI NAVIGATION (<nav>) -->
+        <nav aria-label="Điều hướng chính">
+            <ul>
+                <li><a href="#about">Về Tôi</a></li>
+                <li><a href="#projects">Dự Án</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 
+      ======================================================================
+      3. KHỐI NỘI DUNG CHÍNH (<main>)
+      ======================================================================
+    -->
+    <main>
+
+        <!-- 
+          KHỐI SECTION 1: Giới thiệu bản thân
+          - data-aos="fade-up": Trượt mờ từ dưới lên khi cuộn đến
+        -->
+        <section id="about" data-aos="fade-up" data-aos-duration="800">
+            <h2>Giới Thiệu Bản Thân</h2>
+            <p>Tôi là sinh viên ngành Công nghệ Thông tin, đam mê xây dựng các giao diện web tối ưu trải nghiệm và hiệu năng.</p>
+        </section>
+
+        <!-- 
+          KHỐI SECTION 2: Dự án tiêu biểu
+          - data-aos="fade-up" cho cả section
+          - Mỗi article có data-aos và data-aos-delay so le tạo hiệu ứng gợn sóng
+        -->
+        <section id="projects" data-aos="fade-up" data-aos-duration="800">
+            <h2>Dự Án Tiêu Biểu</h2>
+
+            <article class="project-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>Dự án 1: Website Bán Hàng E-Commerce</h3>
+                <p>Website mua sắm trực tuyến với tính năng phân loại sản phẩm, giỏ hàng và thanh toán ngân hàng.</p>
+                <p><strong>Công nghệ:</strong> HTML5, CSS3, JavaScript</p>
+                <a href="#">Xem chi tiết dự án</a>
+            </article>
+
+            <article class="project-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>Dự án 2: Ứng Dụng Quản Lý Công Việc</h3>
+                <p>Ứng dụng desktop/web hỗ trợ theo dõi tiến độ công việc hàng ngày và xuất báo cáo thống kê.</p>
+                <p><strong>Công nghệ:</strong> Python, SQLite</p>
+                <a href="#">Xem chi tiết dự án</a>
+            </article>
+
+            <article class="project-item" data-aos="fade-up" data-aos-delay="300">
+                <h3>Dự án 3: Landing Page Giới Thiệu Sự Kiện</h3>
+                <p>Trang đích chuẩn Responsive tối ưu cho thiết bị di động, tốc độ tải nhanh và chuẩn SEO Semantic.</p>
+                <p><strong>Công nghệ:</strong> Semantic HTML5, Flexbox & CSS Grid</p>
+                <a href="#">Xem chi tiết dự án</a>
+            </article>
+        </section>
+
+        <!-- 
+          KHỐI SECTION 3: Kỹ năng
+          - data-aos="fade-right": Trượt vào từ bên trái
+        -->
+        <section id="skills" data-aos="fade-right" data-aos-duration="800">
+            <h2>Kỹ Năng Kỹ Thuật</h2>
+            <ul>
+                <li>Ngôn ngữ: HTML5, CSS3, JavaScript, Python</li>
+                <li>Công cụ & Nền tảng: Git, GitHub, VS Code</li>
+            </ul>
+        </section>
+
+        <!-- 
+          KHỐI ASIDE: Trạng thái hiện tại
+          - data-aos="fade-left": Trượt vào từ bên phải
+        -->
+        <aside data-aos="fade-left" data-aos-duration="800">
+            <h3>Trạng Thái Hiện Tại</h3>
+            <p>Đang tìm kiếm cơ hội thực tập và tham gia các dự án phát triển phần mềm Front-End/Web.</p>
+        </aside>
+
+        <!-- 
+          KHỐI SECTION 4: Liên hệ
+          - data-aos="zoom-in": Phóng to từ nhỏ lên kích thước đầy đủ
+        -->
+        <section id="contact" data-aos="zoom-in" data-aos-duration="800">
+            <h2>Thông Tin Liên Hệ</h2>
+            <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+            <p>GitHub: <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a></p>
+        </section>
+
+    </main>
+
+    <!-- KHỐI FOOTER (<footer>) -->
+    <footer data-aos="fade-up" data-aos-duration="600">
+        <p>&copy; 2026 Nguyễn Thanh Hiền. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <!-- ======================================================================
+         2. TÍCH HỢP JAVASCRIPT CỦA THƯ VIỆN AOS QUA CDN (Đặt trước thẻ đóng </body>)
+         ====================================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- 3. KHỞI TẠO VÀ CẤU HÌNH AOS -->
+    <script>
+        AOS.init({
+            duration: 800,      // Thời lượng chuyển động (ms)
+            easing: 'ease-out', // Hiệu ứng gia tốc êm ái
+            once: false,        // false: Chạy lại hiệu ứng mỗi khi cuộn qua lại
+            offset: 120         // Khoảng cách kích hoạt trước khi chạm phần tử (px)
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,622 @@
+/* ==========================================================================
+   BÀI TẬP CSS TUẦN 5 - NHÓM 10
+   Cấu trúc chuẩn: 1. BASE -> 2. LAYOUT -> 3. COMPONENTS
+   ========================================================================== */
+
+/* ==========================================================================
+   1. BASE (CSS Variables, Reset & Typography cơ bản)
+   ========================================================================== */
+:root {
+    /* Bảng màu chủ đạo (Primary & Accent) */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-primary-dark: #1e40af;
+    --color-accent: #38bdf8;
+    --color-white: #ffffff;
+
+    /* Bảng màu nền (Backgrounds) */
+    --bg-body: #f1f5f9;
+    --bg-surface: #ffffff;
+    --bg-subtle: #f8fafc;
+    --bg-track: #e2e8f0;
+    --bg-tag: #e0f2fe;
+
+    /* Bảng màu chữ (Typography Colors) */
+    --text-heading: #0f172a;
+    --text-dark: #1e293b;
+    --text-main: #334155;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-on-dark: #cbd5e1;
+    --text-tag: #0369a1;
+
+    /* Viền & Hiệu ứng đổ bóng (Borders & Shadows) */
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+
+    /* Màu RGBA phục vụ Animation & Overlay */
+    --pulse-shadow-base: rgba(37, 99, 235, 0.4);
+    --pulse-shadow-mid: rgba(37, 99, 235, 0.5);
+    --pulse-ring-start: rgba(37, 99, 235, 0.7);
+    --pulse-ring-end: rgba(37, 99, 235, 0);
+    --parallax-overlay-start: rgba(15, 23, 42, 0.75);
+    --parallax-overlay-end: rgba(30, 58, 138, 0.8);
+    --avatar-overlay: rgba(15, 23, 42, 0.65);
+
+    /* Font chữ */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "Consolas", "Courier New", Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   2. LAYOUT (Khung bố cục trang, Header, Grid 2 cột & Footer)
+   ========================================================================== */
+.layout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+}
+
+/* Header & Thanh điều hướng */
+.site-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.site-header h1 {
+    font-size: 1.35rem;
+    color: var(--text-heading);
+    font-weight: 700;
+}
+
+.nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav-list a:hover {
+    color: var(--color-primary);
+}
+
+/* Bố cục cột chính (Main) & cột phụ (Sidebar) */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .nav-list {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   3. COMPONENTS (Các thành phần giao diện, Avatar & 6 Yêu cầu bài tập)
+   ========================================================================== */
+
+/* --- 3.0. Base Card, Avatar Profile & Skill Tags --- */
+.card {
+    background: var(--bg-surface);
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.card h2 {
+    font-size: 1.35rem;
+    color: var(--text-heading);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--color-primary);
+    padding-left: 10px;
+}
+
+/* Khung Ảnh Đại Diện (Avatar Profile) */
+.about-profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-wrapper:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 20px var(--pulse-shadow-base);
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-surface);
+    border: 3px solid var(--bg-surface);
+    display: block;
+}
+
+.avatar-edit-btn {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: var(--avatar-overlay);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+    backdrop-filter: blur(2px);
+}
+
+.avatar-wrapper:hover .avatar-edit-btn {
+    opacity: 1;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: var(--bg-tag);
+    color: var(--text-tag);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.about-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-desc {
+    margin-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+    .about-profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.25rem;
+    }
+}
+
+/* Danh sách Tag kỹ năng phụ */
+.skills-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin-top: 1.25rem;
+}
+
+.skill-tag {
+    background-color: var(--bg-tag);
+    color: var(--text-tag);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --- 3.1. YÊU CẦU 1: Nút tròn cố định góc dưới phải (Pulse Button) --- */
+.pulse-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+    color: var(--color-white);
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px var(--pulse-shadow-base);
+    cursor: pointer;
+    z-index: 9999;
+    text-decoration: none;
+    animation: pulse-animation 2s infinite ease-in-out;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pulse-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--color-white);
+    display: block;
+}
+
+.pulse-btn:hover {
+    animation-play-state: paused;
+    transform: scale(1.15);
+    background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary-dark));
+}
+
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px var(--pulse-shadow-base), 0 0 0 0 var(--pulse-ring-start);
+    }
+    50% {
+        transform: scale(1.12);
+        box-shadow: 0 8px 25px var(--pulse-shadow-mid), 0 0 0 16px var(--pulse-ring-end);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px var(--pulse-shadow-base), 0 0 0 0 var(--pulse-ring-end);
+    }
+}
+
+/* --- 3.2. YÊU CẦU 2: Hiệu ứng lật thẻ 3D (Card Flip Hover) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card-flip {
+    background-color: transparent;
+    perspective: 1000px;
+    height: 270px;
+}
+
+.card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.card-flip:hover .card-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-front {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+}
+
+.card-back {
+    background: linear-gradient(135deg, var(--text-dark), var(--text-heading));
+    color: var(--color-white);
+    transform: rotateY(180deg);
+}
+
+.card-front h3,
+.card-back h3 {
+    font-size: 1.15rem;
+}
+
+.card-front h3 {
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+}
+
+.card-back h3 {
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+}
+
+.card-front .icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-front .hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.card-back p {
+    font-size: 0.9rem;
+    color: var(--text-on-dark);
+    margin-bottom: 1rem;
+}
+
+.btn-detail {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-detail:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* --- 3.3. YÊU CẦU 3: Hiệu ứng máy đánh chữ (Typing Effect) --- */
+.typing-wrapper {
+    margin: 0.5rem 0;
+    background: var(--bg-subtle);
+    padding: 0.85rem 1.25rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--color-primary);
+    display: inline-block;
+    max-width: 100%;
+}
+
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    width: 0;
+    max-width: 100%;
+    animation: 
+        typing 3s steps(40, end) forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 40ch; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-primary); }
+}
+
+/* --- 3.4. YÊU CẦU 4: Hiệu ứng Parallax Section (Desktop & Mobile) --- */
+.parallax-section {
+    position: relative;
+    min-height: 280px;
+    background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-lg);
+}
+
+.parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(var(--parallax-overlay-start), var(--parallax-overlay-end));
+    z-index: 1;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-white);
+    padding: 2rem;
+    max-width: 650px;
+}
+
+.parallax-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-white);
+    border: none;
+    padding: 0;
+}
+
+.parallax-content p {
+    font-size: 1rem;
+    color: var(--text-on-dark);
+}
+
+@media (max-width: 768px) {
+    .parallax-section {
+        background-attachment: scroll;
+        min-height: 220px;
+    }
+    .parallax-content h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* --- 3.5. YÊU CẦU 5: Biểu tượng Hamburger chuyển thành dấu X --- */
+.hamburger-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hamburger-btn {
+    width: 32px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+}
+
+.hamburger-btn .bar {
+    width: 100%;
+    height: 3.5px;
+    background-color: var(--text-dark);
+    border-radius: 4px;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    transform-origin: center;
+}
+
+:is(.hamburger-container, .hamburger-btn).open .bar-top {
+    transform: translateY(10.25px) rotate(45deg);
+}
+
+:is(.hamburger-container, .hamburger-btn).open .bar-middle {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+:is(.hamburger-container, .hamburger-btn).open .bar-bottom {
+    transform: translateY(-10.25px) rotate(-45deg);
+}
+
+/* --- 3.6. YÊU CẦU 6: Thanh tiến trình kỹ năng (Progress Bars) --- */
+.skills-progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.skill-item {
+    width: 100%;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-main);
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    background-color: var(--bg-track);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-inset);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    animation: fill-progress 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.progress-bar-90 { --target-width: 90%; }
+.progress-bar-85 { --target-width: 85%; }
+.progress-bar-80 { --target-width: 80%; }
+.progress-bar-75 { --target-width: 75%; }
+
+@keyframes fill-progress {
+    from { width: 0%; }
+    to { width: var(--target-width, 100%); }
+}
