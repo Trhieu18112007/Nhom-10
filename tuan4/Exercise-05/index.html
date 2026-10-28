@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thư viện ảnh responsive sử dụng CSS Grid auto-fit và minmax.">
+  <title>Bài 5 | Responsive Image Gallery</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="#">HDH<span>Lab</span></a><span class="header-tag">EXERCISE 05</span></header>
+  <main class="container">
+    <section class="gallery-intro"><p class="eyebrow">CSS GRID · AUTO LAYOUT</p><h1>Góc nhìn <span>sáng tạo.</span></h1><p>Bộ sưu tập hình ảnh tự động sắp xếp theo chiều rộng màn hình.</p></section>
+    <section class="gallery" aria-label="Bộ sưu tập hình ảnh">
+      <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Cảnh núi và hồ"><figcaption><span>01 / NATURE</span><strong>Vẻ đẹp thiên nhiên</strong></figcaption></figure>
+      <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Bãi biển xanh"><figcaption><span>02 / TRAVEL</span><strong>Chạm vào biển xanh</strong></figcaption></figure>
+      <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Sóng biển"><figcaption><span>03 / OCEAN</span><strong>Nhịp điệu đại dương</strong></figcaption></figure>
+      <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=800&q=80" alt="Bầu trời đêm"><figcaption><span>04 / SKY</span><strong>Bầu trời đêm</strong></figcaption></figure>
+      <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=800&q=80" alt="Ánh nắng trên cánh đồng"><figcaption><span>05 / LIGHT</span><strong>Ánh sáng ban mai</strong></figcaption></figure>
+      <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Khu rừng xanh"><figcaption><span>06 / FOREST</span><strong>Lạc giữa rừng xanh</strong></figcaption></figure>
+    </section>
+    <aside class="code-note"><strong>CSS Grid</strong><code>repeat(auto-fit, minmax(250px, 1fr))</code><p>Tự động điều chỉnh số cột mà không cần nhiều Media Queries.</p></aside>
+  </main>
+  <footer class="site-footer">HDH Lab · Bài tập CSS Responsive</footer>
+</body>
+</html>

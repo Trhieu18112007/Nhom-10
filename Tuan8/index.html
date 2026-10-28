@@ -1,0 +1,23 @@
+<head></head>
+<script>
+// Khai báo biến với 'let' cho dữ liệu có thể thay đổi
+let userName = "Nguyễn Văn A";
+let userAge = 25;
+let isLoggedIn = true;
+
+// Khai báo biến với 'const' cho dữ liệu không thay đổi
+const userEmail = "nguyenvana@example.com";
+const appVersion = "1.0.0";
+
+// Bạn có thể thay đổi giá trị của biến 'let'
+userName = "Trần Thị B";
+userAge = userAge + 1; // userAge trở thành 26
+
+// Nhưng không thể thay đổi giá trị của biến 'const'
+// userEmail = "tranthib@example.com"; // Lỗi! Không thể gán lại cho hằng số.
+
+document.write("Tên người dùng:", userName,"<br>");
+document.write("Tuổi:", userAge,"<br>");
+document.write("Email:", userEmail,"<br>");
+document.write("Đã đăng nhập:", isLoggedIn,"<br>");
+</script>

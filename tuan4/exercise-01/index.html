@@ -1,1 +1,35 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài tập responsive typography sử dụng CSS Variables và Mobile First.">
+  <title>Bài 1 | Responsive Typography</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">HDH<span>Lab</span></a>
+    <nav aria-label="Điều hướng chính"><a href="#demo">Demo</a><a href="#scale">Cỡ chữ</a></nav>
+  </header>
+  <main class="container">
+    <section class="hero" id="demo">
+      <p class="eyebrow">EXERCISE 01 · CSS RESPONSIVE</p>
+      <h1>Responsive <span>Typography</span></h1>
+      <p class="lead">Hệ thống cỡ chữ linh hoạt, dễ đọc trên điện thoại, máy tính bảng và desktop.</p>
+      <a class="button" href="#scale">Khám phá hệ thống chữ <span aria-hidden="true">→</span></a>
+    </section>
+    <section id="scale" class="scale-section">
+      <div class="section-heading"><p class="eyebrow">TYPE SCALE</p><h2>Phân cấp kiểu chữ</h2></div>
+      <div class="type-grid">
+        <article class="type-card"><span class="type-label">HEADING 1</span><h1 class="sample-h1">Tiêu đề H1</h1><code>var(--font-h1)</code></article>
+        <article class="type-card"><span class="type-label">HEADING 2</span><h2 class="sample-h2">Tiêu đề H2</h2><code>var(--font-h2)</code></article>
+        <article class="type-card"><span class="type-label">HEADING 3</span><h3 class="sample-h3">Tiêu đề H3</h3><code>var(--font-h3)</code></article>
+        <article class="type-card"><span class="type-label">BODY TEXT</span><p class="sample-p">Đây là đoạn văn mẫu để kiểm tra khả năng đọc.</p><code>var(--font-p)</code></article>
+      </div>
+    </section>
+    <aside class="note"><span class="note-icon">↔</span><p><strong>Mobile First</strong><br>Thay đổi kích thước cửa sổ trình duyệt. Cỡ chữ sẽ tăng khi màn hình đạt 600px.</p></aside>
+  </main>
+  <footer class="site-footer">HDH Lab · Bài tập CSS Responsive</footer>
+</body>
+</html>

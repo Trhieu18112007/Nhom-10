@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hệ thống giao diện sáng tối bằng CSS Variables.">
+  <title>Bài 4 | Dark Light Theme</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <header class="site-header"><a class="brand" href="#">HDH<span>Lab</span></a><span class="header-tag">EXERCISE 04</span></header>
+  <main class="container">
+    <section class="intro"><p class="eyebrow">DESIGN SYSTEM · CSS VARIABLES</p><h1>One design.<br><span>Two moods.</span></h1><p>Hệ thống màu sắc linh hoạt giúp giao diện phù hợp với môi trường sáng hoặc tối.</p></section>
+    <section class="theme-grid" aria-label="So sánh hai giao diện">
+      <article class="theme-card light-preview"><div class="preview-top"><span class="sun">☀</span><span>LIGHT MODE</span><span class="status">Sáng</span></div><div class="preview-content"><span class="mini-brand">◈ NeoTheme</span><h2>Trải nghiệm nhẹ nhàng</h2><p>Giao diện sáng, rõ ràng và thân thiện cho công việc hằng ngày.</p><div class="mini-panel"><strong>✦ Tính năng nổi bật</strong><p>Quản lý màu sắc tập trung bằng CSS Variables.</p></div></div></article>
+      <article class="theme-card dark-preview"><div class="preview-top"><span class="moon">☾</span><span>DARK MODE</span><span class="status">Tối</span></div><div class="preview-content"><span class="mini-brand">◈ NeoTheme</span><h2>Thoải mái khi thiếu sáng</h2><p>Giao diện tối dịu mắt, vẫn giữ độ tương phản cho nội dung.</p><div class="mini-panel"><strong>✦ Tính năng nổi bật</strong><p>Ghi đè biến màu qua class <code>.dark-theme</code>.</p></div></div></article>
+    </section>
+    <aside class="note"><strong>Thử nghiệm:</strong> Xóa hoặc thêm class <code>dark-theme</code> trong thẻ <code>&lt;body&gt;</code> để đổi giao diện.</aside>
+  </main>
+  <footer class="site-footer">HDH Lab · Bài tập CSS Responsive</footer>
+</body>
+</html>

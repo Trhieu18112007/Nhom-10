@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Form liên hệ responsive, thiết kế theo hướng Mobile First.">
+  <title>Bài 6 | Contact Form</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="#">HDH<span>Lab</span></a><span class="header-tag">EXERCISE 06</span></header>
+  <main class="container">
+    <section class="contact-intro"><span class="eyebrow">LET'S CONNECT</span><h1>Chúng tôi luôn<br><span>sẵn sàng hỗ trợ.</span></h1><p>Để lại thông tin, đội ngũ của chúng tôi sẽ liên hệ với bạn sớm nhất.</p></section>
+    <section class="contact-layout">
+      <form class="contact-form" action="#" method="post">
+        <div class="form-heading"><h2>Gửi lời nhắn</h2><p>Các trường có dấu * là bắt buộc.</p></div>
+        <div class="form-field"><label for="fullname">Họ và tên <span>*</span></label><input type="text" id="fullname" name="fullname" placeholder="Ví dụ: Nguyễn Văn A" autocomplete="name" required></div>
+        <div class="form-field"><label for="email">Địa chỉ email <span>*</span></label><input type="email" id="email" name="email" placeholder="ban@example.com" autocomplete="email" required></div>
+        <div class="form-field"><label for="subject">Chủ đề</label><select id="subject" name="subject"><option value="">Chọn chủ đề liên hệ</option><option>Hỗ trợ kỹ thuật</option><option>Tư vấn sản phẩm</option><option>Góp ý dịch vụ</option></select></div>
+        <div class="form-field"><label for="message">Nội dung <span>*</span></label><textarea id="message" name="message" rows="5" placeholder="Bạn cần chúng tôi hỗ trợ điều gì?" required></textarea></div>
+        <button type="submit">Gửi liên hệ <span aria-hidden="true">→</span></button>
+        <p class="privacy-note">Thông tin của bạn chỉ được sử dụng để phản hồi yêu cầu liên hệ.</p>
+      </form>
+      <aside class="contact-aside"><div class="aside-icon">✦</div><h2>Kết nối cùng HDH Lab</h2><p>Chúng tôi luôn trân trọng câu hỏi và ý kiến đóng góp của bạn.</p><div class="contact-detail"><span>EMAIL</span><strong>support@hdhlab.example</strong></div><div class="contact-detail"><span>THỜI GIAN PHẢN HỒI</span><strong>Trong giờ hành chính</strong></div></aside>
+    </section>
+  </main>
+  <footer class="site-footer">HDH Lab · Bài tập CSS Responsive</footer>
+</body>
+</html>
