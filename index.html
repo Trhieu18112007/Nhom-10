@@ -1,96 +1,1023 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio cá nhân của Nguyễn Viết Trung Hiếu - Sinh viên Công nghệ đam mê Lập trình & Thiết kế UI/UX">
+  <title>Nguyễn Viết Trung Hiếu | Hieu.Dev Portfolio</title>
 
-    <title>Learning Dashboard</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================
+       1. CSS VARIABLES & RESET
+       ========================================== */
+    :root {
+      --bg-main: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #26354d;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --border-color: rgba(148, 163, 184, 0.15);
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --success-text: #34d399;
+      --nav-height: 76px;
+      --max-width: 1140px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 35%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ==========================================
+       2. NAVIGATION BAR (<header> & <nav>)
+       ========================================== */
+    header.site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+    }
+
+    nav.navbar {
+      max-width: var(--max-width);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .menu-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ==========================================
+       3. GENERAL SECTION STYLES
+       ========================================== */
+    main {
+      padding-top: var(--nav-height);
+    }
+
+    section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5.5rem 1.5rem;
+    }
+
+    section > header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    /* ==========================================
+       4. HERO SECTION (#hero)
+       ========================================== */
+    #hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-desc {
+      max-width: 620px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--bg-main);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.25);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--accent-glow);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================
+       5. ABOUT SECTION (#about)
+       ========================================== */
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .about-card p {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .about-highlights li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .about-highlights i {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    /* ==========================================
+       6. SKILLS SECTION (#skills)
+       ========================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.12);
+    }
+
+    .skill-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .skill-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .skill-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ==========================================
+       7. PROJECTS SECTION (#projects)
+       ========================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      box-shadow: 0 16px 35px rgba(56, 189, 248, 0.15);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-folder {
+      font-size: 1.75rem;
+      color: var(--accent);
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .project-tags li {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    /* ==========================================
+       8. HOBBIES SECTION (#hobbies)
+       ========================================== */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .hobby-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.15rem;
+      transition: var(--transition);
+    }
+
+    .hobby-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .hobby-icon {
+      min-width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .hobby-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .hobby-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================
+       9. CONTACT SECTION (#contact) & FOOTER
+       ========================================== */
+    .contact-form {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-field span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .form-feedback {
+      display: none;
+      padding: 1rem;
+      border-radius: 8px;
+      background: var(--success-bg);
+      border: 1px solid var(--success-text);
+      color: var(--success-text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .form-feedback.show {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer.site-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* ==========================================
+       10. SCROLL ANIMATION (IntersectionObserver)
+       ========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================
+       11. RESPONSIVE DESIGN (< 768px)
+       ========================================== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1rem;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .about-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .about-highlights,
+      .skills-grid,
+      .projects-grid,
+      .hobbies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            Learning Dashboard
-        </div>
+  <!-- 1. NAVIGATION BAR -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Điều hướng chính">
+      <a href="#hero" class="logo">
+        <i class="fa-solid fa-code" aria-hidden="true"></i>
+        Hieu<span>.Dev</span>
+      </a>
 
-        <nav>
-            <ul>
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Môn học</a></li>
-                <li><a href="#">Tiến độ</a></li>
-                <li><a href="#">Thống kê</a></li>
-            </ul>
-        </nav>
-    </header>
+      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#hobbies">Sở thích</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Main content -->
-    <main>
+  <main>
+    <!-- 2. HERO SECTION -->
+    <section id="hero" class="reveal">
+      <p class="hero-badge">
+        <i class="fa-solid fa-terminal"></i> Portfolio Cá Nhân
+      </p>
+      <h1>Nguyễn Viết Trung Hiếu</h1>
+      <p class="hero-subtitle">Sinh viên Công nghệ | Đam mê Lập trình &amp; Thiết kế UI/UX.</p>
+      <p class="hero-desc">"Biến ý tưởng thành sản phẩm thực tế qua từng dòng code và bản vẽ thiết kế."</p>
+      <nav class="hero-cta" aria-label="Hành động nhanh">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fa-solid fa-rocket"></i> Xem dự án
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fa-solid fa-paper-plane"></i> Liên hệ ngay
+        </a>
+      </nav>
+    </section>
 
-        <!-- Featured section -->
-        <section>
-            <h2>Tổng quan học tập</h2>
+    <!-- 3. GIỚI THIỆU (#about) -->
+    <section id="about" class="reveal">
+      <header>
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Giới thiệu bản thân</h2>
+      </header>
 
-            <article>
-                <h3>Tiến độ học tập</h3>
-                <p>65%</p>
-            </article>
+      <article class="about-card">
+        <p>
+          Tôi hiện là sinh viên năm 1 tại Trường Đại học Lạc Hồng (LHU). Tôi yêu thích việc khám phá cách mọi thứ vận hành, từ việc xây dựng giao diện người dùng trực quan, phân tích cấu trúc Web cho đến lập trình điều khiển các vi điều khiển phần cứng.
+        </p>
+        <ul class="about-highlights">
+          <li>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Đại học Lạc Hồng (LHU)</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-pen-ruler"></i>
+            <span>Tư duy Thiết kế UI/UX</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-microchip"></i>
+            <span>Phát triển Web &amp; Nhúng IoT</span>
+          </li>
+        </ul>
+      </article>
+    </section>
 
-            <article>
-                <h3>Khóa học</h3>
-                <p>4 khóa học đang học</p>
-            </article>
+    <!-- 4. KỸ NĂNG CHUYÊN MÔN (#skills) -->
+    <section id="skills" class="reveal">
+      <header>
+        <span class="section-tag">My Expertise</span>
+        <h2 class="section-title">Kỹ năng chuyên môn</h2>
+      </header>
 
-            <article>
-                <h3>Bài tập</h3>
-                <p>28 bài đã hoàn thành</p>
-            </article>
-        </section>
+      <section class="skills-grid" aria-label="Danh sách kỹ năng">
+        <!-- Card 1 -->
+        <article class="skill-card reveal">
+          <span class="skill-icon">
+            <i class="fa-brands fa-figma"></i>
+          </span>
+          <h3>UI/UX Design</h3>
+          <p>Sử dụng Figma, thiết kế layout ứng dụng di động, tạo luồng điều hướng (navigation flow) và làm Prototype.</p>
+        </article>
 
+        <!-- Card 2 -->
+        <article class="skill-card reveal">
+          <span class="skill-icon">
+            <i class="fa-solid fa-microchip"></i>
+          </span>
+          <h3>Lập trình Nhúng &amp; IoT</h3>
+          <p>Ngôn ngữ C/C++, lập trình vi điều khiển Arduino &amp; ESP32, mô phỏng mạch điện trên nền tảng Wokwi.</p>
+        </article>
 
-        <!-- Course section -->
-        <section>
-            <h2>Khóa học của tôi</h2>
+        <!-- Card 3 -->
+        <article class="skill-card reveal">
+          <span class="skill-icon">
+            <i class="fa-solid fa-laptop-code"></i>
+          </span>
+          <h3>Lập trình Web</h3>
+          <p>Phân tích cấu trúc cây DOM, viết HTML5 Semantic chuẩn, dàn trang với CSS3 và xử lý sự kiện bằng JavaScript.</p>
+        </article>
+      </section>
+    </section>
 
-            <article>
-                <h3>Kỹ thuật lập trình</h3>
-                <p>HTML, CSS, JavaScript</p>
-            </article>
+    <!-- 5. DỰ ÁN TIÊU BIỂU (#projects) -->
+    <section id="projects" class="reveal">
+      <header>
+        <span class="section-tag">Featured Work</span>
+        <h2 class="section-title">Dự án tiêu biểu</h2>
+      </header>
 
-            <article>
-                <h3>Cơ sở dữ liệu</h3>
-                <p>SQL và Database</p>
-            </article>
-        </section>
+      <section class="projects-grid" aria-label="Danh sách dự án">
+        <!-- Dự án 1 -->
+        <article class="project-card reveal">
+          <header class="project-top">
+            <i class="fa-solid fa-bolt-lightning project-folder"></i>
+          </header>
+          <h3>Hệ thống điều khiển thiết bị thông minh với ESP32</h3>
+          <p>Xử lý thuật toán chống dội phím (debounce), nhận diện thao tác nhấn nhả và nhấn giữ (long-press) để đóng ngắt mạch Relay.</p>
+          <ul class="project-tags" aria-label="Công nghệ sử dụng">
+            <li>C++</li>
+            <li>ESP32</li>
+            <li>Wokwi</li>
+          </ul>
+        </article>
 
+        <!-- Dự án 2 -->
+        <article class="project-card reveal">
+          <header class="project-top">
+            <i class="fa-solid fa-mobile-screen-button project-folder"></i>
+          </header>
+          <h3>Thiết kế UI/UX Ứng dụng Quản lý Tài chính Cá nhân</h3>
+          <p>Thiết kế giao diện hiện đại, xây dựng hệ thống màn hình và luồng trải nghiệm người dùng tối ưu trên di động.</p>
+          <ul class="project-tags" aria-label="Công nghệ sử dụng">
+            <li>Figma</li>
+            <li>UI/UX</li>
+          </ul>
+        </article>
 
-        <!-- Sidebar -->
-        <aside>
+        <!-- Dự án 3 -->
+        <article class="project-card reveal">
+          <header class="project-top">
+            <i class="fa-solid fa-sitemap project-folder"></i>
+          </header>
+          <h3>Nghiên cứu &amp; Phân tích cấu trúc DOM Web</h3>
+          <p>Đánh giá cấu trúc thẻ ngữ nghĩa của các trang báo điện tử lớn và vẽ sơ đồ hóa cây DOM.</p>
+          <ul class="project-tags" aria-label="Công nghệ sử dụng">
+            <li>HTML Semantic</li>
+            <li>Mermaid</li>
+          </ul>
+        </article>
+      </section>
+    </section>
 
-            <section>
-                <h2>Thông báo</h2>
-                <p>Bạn có 3 bài tập chưa hoàn thành.</p>
-            </section>
+    <!-- 6. SỞ THÍCH & HOẠT ĐỘNG (#hobbies) -->
+    <section id="hobbies" class="reveal">
+      <header>
+        <span class="section-tag">Interests</span>
+        <h2 class="section-title">Sở thích &amp; Hoạt động</h2>
+      </header>
 
-            <section>
-                <h2>Lịch học</h2>
-                <p>Thứ 4 - Kỹ thuật lập trình</p>
-            </section>
+      <section class="hobbies-grid" aria-label="Danh sách sở thích">
+        <article class="hobby-card reveal">
+          <span class="hobby-icon">
+            <i class="fa-solid fa-feather-pointed"></i>
+          </span>
+          <section>
+            <h3>Cầu lông (Badminton)</h3>
+            <p>Rèn luyện thể lực và phản xạ.</p>
+          </section>
+        </article>
 
-        </aside>
+        <article class="hobby-card reveal">
+          <span class="hobby-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </span>
+          <section>
+            <h3>AI &amp; Prompt Engineering</h3>
+            <p>Nghiên cứu công cụ AI, tối ưu hóa prompt tạo ảnh nghệ thuật.</p>
+          </section>
+        </article>
 
-    </main>
+        <article class="hobby-card reveal">
+          <span class="hobby-icon">
+            <i class="fa-solid fa-gamepad"></i>
+          </span>
+          <section>
+            <h3>Gaming</h3>
+            <p>Giải trí và phân tích cơ chế đồ họa trong game.</p>
+          </section>
+        </article>
+      </section>
+    </section>
 
+    <!-- 7. LIÊN HỆ (#contact) -->
+    <section id="contact" class="reveal">
+      <header>
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Liên hệ với tôi</h2>
+      </header>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Learning Dashboard</p>
-    </footer>
+      <form class="contact-form" id="contactForm" novalidate>
+        <label class="form-field">
+          <span>Họ tên</span>
+          <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên của bạn..." required>
+        </label>
 
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </label>
+
+        <label class="form-field">
+          <span>Nội dung tin nhắn</span>
+          <textarea id="message" name="message" placeholder="Nhập nội dung tin nhắn..." required></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+          <i class="fa-solid fa-paper-plane"></i> Gửi tin nhắn
+        </button>
+
+        <p id="formFeedback" class="form-feedback" role="status" aria-live="polite">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Cảm ơn bạn! Tin nhắn đã được gửi đến Trung Hiếu.</span>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Nguyễn Viết Trung Hiếu. All rights reserved.</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ==========================================
+         1. MOBILE MENU LOGIC
+         ========================================== */
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      const navItems = navLinks.querySelectorAll('a');
+      const menuIcon = menuToggle.querySelector('i');
+
+      const toggleMenu = () => {
+        const isActive = navLinks.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isActive);
+        menuIcon.className = isActive ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+      };
+
+      menuToggle.addEventListener('click', toggleMenu);
+
+      // Tự động đóng menu khi bấm vào bất kỳ link nào
+      navItems.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuIcon.className = 'fa-solid fa-bars';
+          }
+        });
+      });
+
+      /* ==========================================
+         2. SCROLL ANIMATION LOGIC (IntersectionObserver)
+         ========================================== */
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      /* ==========================================
+         3. FORM SUBMIT LOGIC
+         ========================================== */
+      const contactForm = document.getElementById('contactForm');
+      const formFeedback = document.getElementById('formFeedback');
+
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!fullName || !email || !message) {
+          alert('Vui lòng điền đầy đủ Họ tên, Email và Nội dung tin nhắn!');
+          return;
+        }
+
+        // Hiển thị thông báo thành công trên giao diện
+        formFeedback.classList.add('show');
+
+        // Xóa trắng form
+        contactForm.reset();
+
+        // Tự động ẩn thông báo sau 5 giây
+        setTimeout(() => {
+          formFeedback.classList.remove('show');
+        }, 5000);
+      });
+    });
+  </script>
 </body>
 </html>

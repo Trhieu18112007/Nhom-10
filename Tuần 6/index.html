@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Portfolio - Lạc Hồng University</title>
+    <!-- Thư viện AOS CSS (Bài 4) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Liên kết file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BÀI 3: Responsive Navigation & Checkbox Hack -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Nhóm Thiết Kế Web</div>
+            
+            <!-- Checkbox ẩn để xử lý click Hamburger trên Mobile -->
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger">&#9776;</label>
+            
+            <ul class="nav-links">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#portfolio">Bài tập (Tuần 1-6)</a></li>
+                <li><a href="#footer">Thông tin nhóm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN: Chứa nội dung chính, đẩy Footer xuống đáy (Bài 5) -->
+    <main>
+        <!-- BÀI 4: AOS Animation cho Tiêu đề -->
+        <h1 data-aos="fade-down" data-aos-duration="1000" class="page-title" id="portfolio">
+            Mục Lục Bài Tập Thực Hành
+        </h1>
+        
+        <!-- BÀI 1: CSS Grid cho danh sách bài tập -->
+        <section class="grid-container">
+            
+            <!-- Card Tuần 1 -->
+            <div class="card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="card-img">
+                    <img src="anh-tuan1.jpg" alt="Bài tập Tuần 1">
+                    <a href="Tuan1/index.html" class="btn-xem">Xem chi tiết</a>
+                </div>
+                <h3>Bài thực hành Tuần 1</h3>
+            </div>
+
+            <!-- Card Tuần 2 -->
+            <div class="card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="card-img">
+                    <img src="anh-tuan2.jpg" alt="Bài tập Tuần 2">
+                    <a href="Tuan2/index.html" class="btn-xem">Xem chi tiết</a>
+                </div>
+                <h3>Bài thực hành Tuần 2</h3>
+            </div>
+
+            <!-- Card Tuần 3 -->
+            <div class="card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <div class="card-img">
+                    <img src="anh-tuan3.jpg" alt="Bài tập Tuần 3">
+                    <a href="Tuan3/index.html" class="btn-xem">Xem chi tiết</a>
+                </div>
+                <h3>Bài thực hành Tuần 3</h3>
+            </div>
+
+            <!-- Card Tuần 4 -->
+            <div class="card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="card-img">
+                    <img src="anh-tuan4.jpg" alt="Bài tập Tuần 4">
+                    <a href="Tuan4/index.html" class="btn-xem">Xem chi tiết</a>
+                </div>
+                <h3>Bài thực hành Tuần 4</h3>
+            </div>
+
+            <!-- Card Tuần 5 -->
+            <div class="card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                <div class="card-img">
+                    <img src="anh-tuan5.jpg" alt="Bài tập Tuần 5">
+                    <a href="Tuan5/index.html" class="btn-xem">Xem chi tiết</a>
+                </div>
+                <h3>Bài thực hành Tuần 5</h3>
+            </div>
+
+            <!-- Card Tuần 6 -->
+            <div class="card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+                <div class="card-img">
+                    <img src="anh-tuan6.jpg" alt="Bài tập Tuần 6">
+                    <a href="Tuan6/index.html" class="btn-xem">Xem chi tiết</a>
+                </div>
+                <h3>Bài thực hành Tuần 6</h3>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- BÀI 5: Footer 3 cột chuyên nghiệp & Sticky Footer -->
+    <footer id="footer">
+        <div class="footer-col" data-aos="fade-right" data-aos-duration="1000">
+            <h4>Thông tin nhóm</h4>
+            <p>Sinh viên thực hiện: Nhóm thiết kế Web.</p>
+            <p>Học phần: 111101 - Thiết Kế Web.</p>
+            <p>Đại học Lạc Hồng.</p>
+        </div>
+        <div class="footer-col" data-aos="fade-up" data-aos-duration="1000">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+                <li><a href="https://github.com/your-link">GitHub Dự án</a></li>
+                <li><a href="https://validator.w3.org/">W3C Validator</a></li>
+            </ul>
+        </div>
+        <div class="footer-col" data-aos="fade-left" data-aos-duration="1000">
+            <h4>Đăng ký nhận tin</h4>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Nhập email của bạn..." required>
+                <button type="submit">Gửi</button>
+            </form>
+        </div>
+    </footer>
+
+    <!-- Thư viện AOS Script (Bài 4) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo hiệu ứng
+        AOS.init({
+            once: true, // Hiệu ứng chỉ chạy 1 lần khi cuộn tới
+            offset: 50  // Bắt đầu hiệu ứng sớm hơn 50px
+        });
+    </script>
+</body>
+</html>

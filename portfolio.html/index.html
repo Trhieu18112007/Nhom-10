@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio cá nhân của Nguyễn Viết Trung Hiếu - Sinh viên Công nghệ đam mê Lập trình & Thiết kế UI/UX">
+  <title>Nguyễn Viết Trung Hiếu | Hieu.Dev Portfolio</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Liên kết đến file CSS mới tạo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. NAVIGATION BAR -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Điều hướng chính">
+      <a href="#hero" class="logo">
+        <i class="fa-solid fa-code" aria-hidden="true"></i>
+        Hieu<span>.Dev</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#hobbies">Sở thích</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 2. HERO SECTION -->
+    <section id="hero" class="reveal">
+      <!-- Thêm phần Avatar cá nhân -->
+      <div class="hero-avatar-wrapper" style="margin-bottom: 1.5rem;">
+        <img src="avatar.jpg" alt="Nguyễn Viết Trung Hiếu" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); box-shadow: 0 0 25px var(--accent-glow-strong);">
+      </div>
+
+      <p class="hero-badge">
+        <i class="fa-solid fa-terminal"></i> Portfolio Cá Nhân
+      </p>
+      <h1>Nguyễn Viết Trung Hiếu</h1>
+      <p class="hero-subtitle">Sinh viên Công nghệ | Đam mê Lập trình &amp; Thiết kế UI/UX.</p>
+      <p class="hero-desc">"Biến ý tưởng thành sản phẩm thực tế qua từng dòng code và bản vẽ thiết kế."</p>
+      <nav class="hero-cta" aria-label="Hành động nhanh">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fa-solid fa-rocket"></i> Xem dự án
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fa-solid fa-paper-plane"></i> Liên hệ ngay
+        </a>
+      </nav>
+    </section>
+
+    <!-- 3. GIỚI THIỆU (#about) -->
+    <section id="about" class="reveal">
+      <header>
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Giới thiệu bản thân</h2>
+      </header>
+
+      <article class="about-card">
+        <p>
+          Tôi hiện là sinh viên năm 1 tại Trường Đại học Lạc Hồng (LHU). Tôi yêu thích việc khám phá cách mọi thứ vận hành, từ việc xây dựng giao diện người dùng trực quan, phân tích cấu trúc Web cho đến lập trình điều khiển các vi điều khiển phần cứng.
+        </p>
+        <ul class="about-highlights">
+          <li>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Đại học Lạc Hồng (LHU)</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-pen-ruler"></i>
+            <span>Tư duy Thiết kế UI/UX</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-microchip"></i>
+            <span>Phát triển Web &amp; Nhúng IoT</span>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 4. KỸ NĂNG CHUYÊN MÔN (#skills) -->
+    <section id="skills" class="reveal">
+      <header>
+        <span class="section-tag">My Expertise</span>
+        <h2 class="section-title">Kỹ năng chuyên môn</h2>
+      </header>
+
+      <section class="skills-grid" aria-label="Danh sách kỹ năng">
+        <!-- Card 1 -->
+        <article class="skill-card reveal">
+          <span class="skill-icon">
+            <i class="fa-brands fa-figma"></i>
+          </span>
+          <h3>UI/UX Design</h3>
+          <p>Sử dụng Figma, thiết kế layout ứng dụng di động, tạo luồng điều hướng (navigation flow) và làm Prototype.</p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="skill-card reveal">
+          <span class="skill-icon">
+            <i class="fa-solid fa-microchip"></i>
+          </span>
+          <h3>Lập trình Nhúng &amp; IoT</h3>
+          <p>Ngôn ngữ C/C++, lập trình vi điều khiển Arduino &amp; ESP32, mô phỏng mạch điện trên nền tảng Wokwi.</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="skill-card reveal">
+          <span class="skill-icon">
+            <i class="fa-solid fa-laptop-code"></i>
+          </span>
+          <h3>Lập trình Web</h3>
+          <p>Phân tích cấu trúc cây DOM, viết HTML5 Semantic chuẩn, dàn trang với CSS3 và xử lý sự kiện bằng JavaScript.</p>
+        </article>
+      </section>
+    </section>
+
+    <!-- 5. DỰ ÁN TIÊU BIỂU (#projects) -->
+    <section id="projects" class="reveal">
+      <header>
+        <span class="section-tag">Featured Work</span>
+        <h2 class="section-title">Dự án tiêu biểu</h2>
+      </header>
+
+      <section class="projects-grid" aria-label="Danh sách dự án">
+        <!-- Dự án 1 -->
+        <article class="project-card reveal">
+          <header class="project-top">
+            <i class="fa-solid fa-bolt-lightning project-folder"></i>
+          </header>
+          <h3>Hệ thống điều khiển thiết bị thông minh với ESP32</h3>
+          <p>Xử lý thuật toán chống dội phím (debounce), nhận diện thao tác nhấn nhả và nhấn giữ (long-press) để đóng ngắt mạch Relay.</p>
+          <ul class="project-tags" aria-label="Công nghệ sử dụng">
+            <li>C++</li>
+            <li>ESP32</li>
+            <li>Wokwi</li>
+          </ul>
+        </article>
+
+        <!-- Dự án 2 -->
+        <article class="project-card reveal">
+          <header class="project-top">
+            <i class="fa-solid fa-mobile-screen-button project-folder"></i>
+          </header>
+          <h3>Thiết kế UI/UX Ứng dụng Quản lý Tài chính Cá nhân</h3>
+          <p>Thiết kế giao diện hiện đại, xây dựng hệ thống màn hình và luồng trải nghiệm người dùng tối ưu trên di động.</p>
+          <ul class="project-tags" aria-label="Công nghệ sử dụng">
+            <li>Figma</li>
+            <li>UI/UX</li>
+          </ul>
+        </article>
+
+        <!-- Dự án 3 -->
+        <article class="project-card reveal">
+          <header class="project-top">
+            <i class="fa-solid fa-sitemap project-folder"></i>
+          </header>
+          <h3>Nghiên cứu &amp; Phân tích cấu trúc DOM Web</h3>
+          <p>Đánh giá cấu trúc thẻ ngữ nghĩa của các trang báo điện tử lớn và vẽ sơ đồ hóa cây DOM.</p>
+          <ul class="project-tags" aria-label="Công nghệ sử dụng">
+            <li>HTML Semantic</li>
+            <li>Mermaid</li>
+          </ul>
+        </article>
+      </section>
+    </section>
+
+    <!-- 6. SỞ THÍCH & HOẠT ĐỘNG (#hobbies) -->
+    <section id="hobbies" class="reveal">
+      <header>
+        <span class="section-tag">Interests</span>
+        <h2 class="section-title">Sở thích &amp; Hoạt động</h2>
+      </header>
+
+      <section class="hobbies-grid" aria-label="Danh sách sở thích">
+        <article class="hobby-card reveal">
+          <span class="hobby-icon">
+            <i class="fa-solid fa-feather-pointed"></i>
+          </span>
+          <section>
+            <h3>Cầu lông (Badminton)</h3>
+            <p>Rèn luyện thể lực và phản xạ.</p>
+          </section>
+        </article>
+
+        <article class="hobby-card reveal">
+          <span class="hobby-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </span>
+          <section>
+            <h3>AI &amp; Prompt Engineering</h3>
+            <p>Nghiên cứu công cụ AI, tối ưu hóa prompt tạo ảnh nghệ thuật.</p>
+          </section>
+        </article>
+
+        <article class="hobby-card reveal">
+          <span class="hobby-icon">
+            <i class="fa-solid fa-gamepad"></i>
+          </span>
+          <section>
+            <h3>Gaming</h3>
+            <p>Giải trí và phân tích cơ chế đồ họa trong game.</p>
+          </section>
+        </article>
+      </section>
+    </section>
+
+    <!-- 7. LIÊN HỆ (#contact) -->
+    <section id="contact" class="reveal">
+      <header>
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Liên hệ với tôi</h2>
+      </header>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <label class="form-field">
+          <span>Họ tên</span>
+          <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên của bạn..." required>
+        </label>
+
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </label>
+
+        <label class="form-field">
+          <span>Nội dung tin nhắn</span>
+          <textarea id="message" name="message" placeholder="Nhập nội dung tin nhắn..." required></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+          <i class="fa-solid fa-paper-plane"></i> Gửi tin nhắn
+        </button>
+
+        <p id="formFeedback" class="form-feedback" role="status" aria-live="polite">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Cảm ơn bạn! Tin nhắn đã được gửi đến Trung Hiếu.</span>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Nguyễn Viết Trung Hiếu. All rights reserved.</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ==========================================
+         1. MOBILE MENU LOGIC
+         ========================================== */
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      const navItems = navLinks.querySelectorAll('a');
+      const menuIcon = menuToggle.querySelector('i');
+
+      const toggleMenu = () => {
+        const isActive = navLinks.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isActive);
+        menuIcon.className = isActive ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+      };
+
+      menuToggle.addEventListener('click', toggleMenu);
+
+      navItems.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuIcon.className = 'fa-solid fa-bars';
+          }
+        });
+      });
+
+      /* ==========================================
+         2. SCROLL ANIMATION LOGIC (IntersectionObserver)
+         ========================================== */
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      /* ==========================================
+         3. FORM SUBMIT LOGIC
+         ========================================== */
+      const contactForm = document.getElementById('contactForm');
+      const formFeedback = document.getElementById('formFeedback');
+
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!fullName || !email || !message) {
+          alert('Vui lòng điền đầy đủ Họ tên, Email và Nội dung tin nhắn!');
+          return;
+        }
+
+        formFeedback.classList.add('show');
+        contactForm.reset();
+
+        setTimeout(() => {
+          formFeedback.classList.remove('show');
+        }, 5000);
+      });
+    });
+  </script>
+</body>
+</html>

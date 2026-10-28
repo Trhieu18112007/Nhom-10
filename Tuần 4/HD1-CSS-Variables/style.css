@@ -1,0 +1,35 @@
+:root {
+  --color-primary: #3157d5;
+  --color-secondary: #17a889;
+  --text-primary: #202536;
+  --text-secondary: #586174;
+  --text-muted: #8992a3;
+  --bg-color: #f4f6fb;
+  --surface-color: #ffffff;
+  --border-color: #e5e9f2;
+  --radius: 18px;
+  --space-sm: 10px;
+  --space-md: 20px;
+  --space-lg: 32px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg-color); color: var(--text-primary); font: 16px/1.6 Arial, sans-serif; }
+a { color: inherit; text-decoration: none; }
+.site-header { display:flex; justify-content:space-between; align-items:center; padding:18px 7%; background:var(--surface-color); border-bottom:1px solid var(--border-color); }
+.logo { font-size:1.4rem; font-weight:800; } .logo span { color:var(--color-secondary); }
+nav { display:flex; gap:22px; color:var(--text-secondary); font-size:.95rem; }
+nav a:hover { color:var(--color-primary); }
+.layout { width:min(1100px, 90%); margin:38px auto; display:grid; grid-template-columns:280px 1fr; gap:var(--space-lg); align-items:start; }
+.sidebar,.panel { background:var(--surface-color); border:1px solid var(--border-color); border-radius:var(--radius); padding:var(--space-lg); }
+.sidebar { text-align:center; position:sticky; top:20px; }
+.avatar { width:92px; height:92px; margin:0 auto 14px; display:grid; place-items:center; border-radius:50%; background:linear-gradient(135deg,var(--color-primary),var(--color-secondary)); color:white; font-size:2.5rem; font-weight:700; }
+.sidebar h1 { font-size:1.35rem; margin:0; } .muted { color:var(--text-secondary); }
+.button { display:inline-block; padding:10px 16px; border-radius:10px; background:var(--color-primary); color:white; margin-top:10px; }
+.content { display:grid; gap:var(--space-md); } .panel h2 { margin:0 0 10px; font-size:1.35rem; }
+.eyebrow { color:var(--color-secondary); font-weight:700; letter-spacing:.15em; font-size:.75rem; margin:0 0 4px; }
+.chips { display:flex; flex-wrap:wrap; gap:10px; } .chips span { background:color-mix(in srgb,var(--color-primary) 10%,white); color:var(--color-primary); border-radius:999px; padding:6px 12px; font-size:.9rem; }
+.project { padding:12px 0; border-top:1px solid var(--border-color); } .project h3 { margin:0; font-size:1rem; } .project p { margin:4px 0 0; }
+footer { text-align:center; padding:20px; color:var(--text-muted); font-size:.9rem; }
+@media (max-width:767px) { .site-header { padding:16px 5%; } nav { gap:12px; font-size:.85rem; } .layout { grid-template-columns:1fr; margin:22px auto; gap:18px; } .sidebar { position:static; } .sidebar,.panel { padding:22px; } }
+@media (max-width:420px) { nav { display:none; } }

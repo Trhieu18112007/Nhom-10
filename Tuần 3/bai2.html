@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2: Bảng giá dịch vụ (Flexbox)</title>
+    <style>
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f0f4f8; 
+            color: #333;
+        }
+        
+        .header-title {
+            text-align: center;
+            margin-top: 40px;
+            color: #1e3c72;
+            font-size: 32px;
+            text-transform: uppercase;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            margin: 20px; 
+            padding: 10px 20px; 
+            background: #e74c3c; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .back-btn:hover { background: #c0392b; }
+        
+        /* Chứa 3 thẻ bảng giá */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; /* Giúp 3 thẻ luôn có chiều cao bằng nhau */
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        /* Thiết kế từng thẻ */
+        .price-card {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* Chia đều không gian cho 3 thẻ */
+            max-width: 350px;
+            padding: 40px 30px;
+            border: 1px solid #e1e8ed;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Hiệu ứng phóng to khi đưa chuột vào */
+        .price-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+            border-color: #3498db;
+        }
+        
+        /* Thiết kế riêng cho thẻ Nổi bật (Pro) */
+        .price-card.highlight {
+            border-color: #3498db;
+            border-width: 2px;
+            transform: scale(1.02); /* Mặc định đã to hơn một chút */
+        }
+        .price-card.highlight:hover {
+            transform: scale(1.07);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: bold;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .price-card h3 { 
+            text-align: center; 
+            color: #2c3e50; 
+            font-size: 24px; 
+            margin: 0 0 15px 0; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .price-amount {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 25px;
+        }
+        .price-amount span {
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+        
+        /* Danh sách tính năng */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 35px 0;
+        }
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #f1f2f6;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+        .features-list li::before {
+            content: '✔';
+            color: #2ecc71;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        .features-list li.disabled {
+            color: #a4b0be;
+            text-decoration: line-through;
+        }
+        .features-list li.disabled::before {
+            content: '✘';
+            color: #e74c3c;
+        }
+        
+        /* Nút mua hàng */
+        .buy-btn {
+            margin-top: auto; /* QUAN TRỌNG: Lực đẩy flexbox giúp nút luôn nằm sát đáy thẻ */
+            padding: 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            text-transform: uppercase;
+            width: 100%;
+        }
+        .buy-btn:hover { 
+            background: #2980b9; 
+            transform: translateY(-2px);
+        }
+        
+        /* Nút mua của thẻ Pro màu cam đỏ cho nổi bật */
+        .price-card.highlight .buy-btn {
+            background: #e67e22;
+        }
+        .price-card.highlight .buy-btn:hover {
+            background: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">⬅ Quay lại Menu</a>
+    
+    <h2 class="header-title">Bảng giá Dịch vụ Thiết kế Web</h2>
+    
+    <div class="pricing-container">
+        <!-- GÓI BASIC -->
+        <div class="price-card">
+            <h3>Basic</h3>
+            <div class="price-amount">1.5M<span>/gói</span></div>
+            <ul class="features-list">
+                <li>Thiết kế 1 trang (Landing Page)</li>
+                <li>Giao diện tương thích Mobile</li>
+                <li>Tặng Hosting 1 năm (2GB)</li>
+                <li class="disabled">Tối ưu chuẩn SEO toàn diện</li>
+                <li class="disabled">Tích hợp thanh toán Online</li>
+            </ul>
+            <button class="buy-btn">Chọn gói này</button>
+        </div>
+        
+        <!-- GÓI PRO (NỔI BẬT) -->
+        <div class="price-card highlight">
+            <div class="popular-badge">HOT</div>
+            <h3>Pro</h3>
+            <div class="price-amount">4.5M<span>/gói</span></div>
+            <ul class="features-list">
+                <li>Thiết kế đa trang (Tối đa 15)</li>
+                <li>Giao diện tương thích Mobile</li>
+                <li>Tặng Hosting 1 năm (10GB)</li>
+                <li>Tối ưu chuẩn SEO toàn diện</li>
+                <li class="disabled">Tích hợp thanh toán Online</li>
+            </ul>
+            <button class="buy-btn">Chọn gói này</button>
+        </div>
+        
+        <!-- GÓI ENTERPRISE -->
+        <div class="price-card">
+            <h3>Enterprise</h3>
+            <div class="price-amount">12.0M<span>/gói</span></div>
+            <ul class="features-list">
+                <li>Hệ thống Thương mại điện tử</li>
+                <li>Giao diện thiết kế độc quyền</li>
+                <li>Máy chủ riêng (VPS) băng thông lớn</li>
+                <li>Tối ưu chuẩn SEO toàn diện</li>
+                <li>Tích hợp đa cổng thanh toán</li>
+            </ul>
+            <button class="buy-btn">Liên hệ ngay</button>
+        </div>
+    </div>
+</body>
+</html>

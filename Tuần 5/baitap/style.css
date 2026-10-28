@@ -1,0 +1,502 @@
+/* ========================================
+   RESET & TỔNG THỂ
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f0f4f8;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   BÀI 5: HAMBURGER MENU - Header & Navigation
+   ======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    z-index: 999;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #4318ff;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #2b3674;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.nav-menu ul li a:hover {
+    background-color: #4318ff;
+    color: #fff;
+}
+
+/* --- Nút Hamburger (3 gạch) --- */
+.hamburger {
+    display: none; /* Ẩn trên desktop, hiện trên mobile */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #2b3674;
+    border-radius: 3px;
+    transition: all 0.35s ease;
+    transform-origin: center;
+}
+
+/* Khi thêm class "open": gạch giữa biến mất, trên/dưới xoay thành dấu X */
+.hamburger.open .bar-top {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.hamburger.open .bar-mid {
+    opacity: 0;
+}
+
+.hamburger.open .bar-bot {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* Responsive: hiện hamburger trên màn hình nhỏ */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.4s ease;
+        padding-top: 80px;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 12px 20px;
+    }
+}
+
+
+/* ========================================
+   BÀI 3 + BÀI 4: HERO SECTION (Typing + Parallax)
+   ======================================== */
+
+/* --- Bài 4: Parallax Background --- */
+.parallax {
+    background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&q=80');
+    background-attachment: fixed;   /* Ảnh nền cố định khi cuộn */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Responsive: tắt parallax trên mobile vì iOS không hỗ trợ background-attachment: fixed */
+@media (max-width: 768px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.hero-greeting {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* --- Bài 3: Typing Effect --- */
+.typing-wrapper {
+    position: relative;
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.typing-hidden {
+    visibility: hidden;
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.typing-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4ade80;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #4ade80;
+    animation:
+        typing 3s steps(22) forwards,
+        blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to   { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50%      { border-color: #4ade80; }
+}
+
+
+/* ========================================
+   CÁC SECTION CHUNG
+   ======================================== */
+.section {
+    padding: 80px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2b3674;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #4318ff;
+    border-radius: 2px;
+    margin: 12px auto 0;
+}
+
+
+/* ========================================
+   BÀI 2: CARD FLIP - Thẻ nhân sự lật mặt
+   ======================================== */
+.about-container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-container {
+    width: 280px;
+    height: 360px;
+    perspective: 1000px;
+    flex-shrink: 0;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.card-container:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.card-front {
+    background: #fff;
+}
+
+.card-front .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(67, 24, 255, 0.2);
+}
+
+.card-front h3 {
+    font-size: 1.4rem;
+    color: #2b3674;
+    margin-bottom: 5px;
+}
+
+.card-front .card-role {
+    color: #707eae;
+    font-weight: 500;
+}
+
+.card-back {
+    background: linear-gradient(135deg, #4318ff, #8a2be2);
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+.card-back h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.card-back p {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-social {
+    text-decoration: none;
+    color: #4318ff;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+}
+
+/* Phần mô tả bên cạnh thẻ */
+.about-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+.about-text h3 {
+    font-size: 1.5rem;
+    color: #2b3674;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   BÀI 6: SKILL BAR ANIMATION - Thanh kỹ năng
+   ======================================== */
+.skills-section {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2b3674;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 14px;
+    background: #e8e8ee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4318ff, #7b5cff);
+    border-radius: 10px;
+    width: 0; /* Bắt đầu từ 0 */
+    animation: fillBar 2s ease-out forwards;
+}
+
+/* Dùng CSS variable --target-width đã gán inline để chạy đến đúng mức % */
+@keyframes fillBar {
+    from { width: 0; }
+    to   { width: var(--target-width); }
+}
+
+/* Tạo delay cho mỗi thanh để chạy lệch nhau */
+.skill:nth-child(1) .skill-progress { animation-delay: 0.2s; }
+.skill:nth-child(2) .skill-progress { animation-delay: 0.4s; }
+.skill:nth-child(3) .skill-progress { animation-delay: 0.6s; }
+.skill:nth-child(4) .skill-progress { animation-delay: 0.8s; }
+.skill:nth-child(5) .skill-progress { animation-delay: 1.0s; }
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #2b3674;
+    color: #c0c7e0;
+}
+
+.footer h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.footer p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+
+/* ========================================
+   BÀI 1: FLOATING ACTION BUTTON (FAB) - Nút nổi
+   ======================================== */
+.fab-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0068FF;
+    box-shadow: 0 4px 12px rgba(0, 104, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-decoration: none;
+    animation: pulse 2s infinite;
+}
+
+.fab-button:hover {
+    animation-play-state: paused;
+    transform: scale(1.15);
+    transition: transform 0.3s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 18px rgba(0, 104, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
+    }
+}
+
