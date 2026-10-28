@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chào mừng theo thời gian thực</title>
+</head>
+<body>
+    <!-- Thẻ chứa nội dung -->
+    <h1 id="greeting"> </h1>
+    <p>Chào mừng các bạn đến với website của chúng tôi</p>
+    <script>
+        // Lấy giờ hiện tại từ hệ thống (0 đến 23)
+        const currenthour = new Date().getHours();
+        let message = "";
+
+        // Sửa lại khung giờ để đặt thông điệp phù hợp
+        if (currenthour >= 5 && currenthour < 12) {
+            message = "Chào buổi sáng!";
+        } else if (currenthour >= 12 && currenthour < 18) {
+            message = "Chào buổi chiều!";
+        } else {
+            message = "Chào buổi tối!";
+        }
+
+        // Truy xuất phần tử từ DOM và gán nội dung bằng innerHTML
+        document.getElementById("greeting").innerHTML = message;
+    </script>
+</body>
+</html>
