@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Modal Mua hàng / Liên hệ</title>
+    
+    <!-- Phần CSS: Định dạng giao diện -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Nút bấm chính */
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Lớp phủ màn hình (Overlay) */
+        .modal-overlay {
+            display: none; /* Mặc định ẩn */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Nền đen mờ */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Hộp nội dung Modal */
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Hiệu ứng xuất hiện */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Nút đóng (dấu X) */
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .modal-close:hover {
+            color: #000;
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .btn-submit {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PHẦN HTML: Giao diện trang web -->
+    <div>
+        <h1>Trang Dự Án Của Tôi</h1>
+        <p>Nhấn vào nút bên dưới để mở form đăng ký mua hàng/liên hệ.</p>
+        <button id="openModalBtn" class="btn-primary">Mua hàng / Liên hệ</button>
+    </div>
+
+    <!-- Khung Modal (Ẩn mặc định) -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="closeModalBtn" class="modal-close">&times;</span>
+            
+            <h2>Đăng ký Mua hàng</h2>
+            <p>Điền thông tin để chúng tôi hỗ trợ bạn nhanh nhất!</p>
+
+            <!-- Form đăng ký -->
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" required placeholder="Nhập họ tên...">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="tel" id="phone" required placeholder="Nhập số điện thoại...">
+                </div>
+
+                <div class="form-group">
+                    <label for="note">Ghi chú:</label>
+                    <textarea id="note" rows="3" placeholder="Yêu cầu thêm..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Gửi thông tin</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PHẦN JAVASCRIPT: Xử lý logic đóng/mở Modal và Form không load lại trang -->
+    <script>
+        // Lấy các phần tử cần tương tác từ DOM
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('contactModal');
+        const contactForm = document.getElementById('contactForm');
+
+        // 1. Mở Modal khi click vào nút chính
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        // 2. Đóng Modal khi click vào dấu X góc phải
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // 3. Đóng Modal khi click ra vùng nền mờ bên ngoài
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // 4. Đóng Modal khi nhấn phím ESC trên bàn phím
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+            }
+        });
+
+        // 5. Xử lý khi submit form mà không làm tải lại trang (No reload)
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Chặn hành vi submit mặc định làm tải lại trang
+
+            // Lấy dữ liệu người dùng nhập
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                note: document.getElementById('note').value
+            };
+
+            // In dữ liệu ra F12 Console để kiểm tra
+            console.log('Dữ liệu khách hàng:', formData);
+
+            // Thông báo thành công, reset form và đóng modal
+            alert('Gửi thông tin thành công! Cảm ơn bạn.');
+            contactForm.reset();
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
